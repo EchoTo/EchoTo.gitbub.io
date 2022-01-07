@@ -1123,6 +1123,33 @@ kbd {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.header-banner-arrow {
+    position: absolute;
+    bottom: 1rem;
+    left: calc(50% - 1rem);
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    cursor: pointer;
+    -webkit-animation: arrowUpDown 2s infinite;
+    -moz-animation: arrowUpDown 2s infinite;
+    -o-animation: arrowUpDown 2s infinite;
+    -ms-animation: arrowUpDown 2s infinite;
+    animation: arrowUpDown 2s infinite;
+}
+
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+div {
+    display: block;
+}
+
 .header-banner-info {
     position: absolute;
     top: 50%;
