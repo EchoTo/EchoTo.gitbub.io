@@ -1190,6 +1190,18 @@ kbd {
     box-sizing: inherit;
 }
 
+.fa-angle-down:before {
+    content: "\f107";
+}
+
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
 div {
     display: block;
 }
