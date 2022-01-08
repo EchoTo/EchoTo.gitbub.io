@@ -922,7 +922,8 @@ kbd {
     width: 100%;
     font-size: 18px;
     background-color: #2d2e30;
-    height: 80vh;
+    background: url(../images/1.jpg) no-repeat;
+    height: 100vh;
 }
 
 .header-inner--bgcolor {
