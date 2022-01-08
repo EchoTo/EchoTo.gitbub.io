@@ -250,6 +250,7 @@ mark {
 .bg-color {
     background-image: transparent !important;
     -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    transition: 1s;
 }
 
 .text-color {
@@ -291,6 +292,7 @@ header .nav-transparent {
     background-color: transparent !important;
     background-image: none;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    transition: 1s;
 }
 
 header nav .brand-span {
