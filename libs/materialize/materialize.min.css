@@ -8189,7 +8189,8 @@ input[type=range]::-ms-thumb {
 
 .carousel.carousel-slider {
     top: 0;
-    left: 0
+    left: 0;
+    background: url(/themes/hexo-theme-matery/source/medias/banner/6.jpg) no-repeat;
 }
 
 .carousel.carousel-slider .carousel-fixed-item {
