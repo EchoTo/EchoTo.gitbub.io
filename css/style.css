@@ -82,6 +82,20 @@ p {
     line-height: 30px;
 }
 
+.note-warning p {
+    background-color: #fdf8ea;
+    border-color: #f0ad4e;
+}
+
+.note p {
+    padding: 0.75rem;
+    border-left: 0.35rem solid;
+    border-radius: 0.25rem;
+    margin: 1.5rem 0;
+    color: #3c4858;
+    font-size: 0.9rem;
+}
+
 i {
     color: #151515;
 }
@@ -4096,18 +4110,4 @@ footer .footer_bottom {
 
 nav.pagination {
     display: block;
-}
-
-.note-warning {
-    background-color: #fdf8ea;
-    border-color: #f0ad4e;
-}
-
-.note {
-    padding: 0.75rem;
-    border-left: 0.35rem solid;
-    border-radius: 0.25rem;
-    margin: 1.5rem 0;
-    color: #3c4858;
-    font-size: 0.9rem;
 }
