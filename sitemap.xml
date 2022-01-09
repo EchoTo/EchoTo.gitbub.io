@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.stq555.com/2022/01/10/C/</loc>
-    
-    <lastmod>2022-01-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.stq555.com/2022/01/08/README/</loc>
     
     <lastmod>2022-01-09</lastmod>
@@ -47,13 +38,6 @@
 
   
   <url>
-    <loc>https://www.stq555.com/tags/C/</loc>
-    <lastmod>2022-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.stq555.com/tags/The-One-Day/</loc>
     <lastmod>2022-01-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -68,13 +52,6 @@
   </url>
   
 
-  
-  <url>
-    <loc>https://www.stq555.com/categories/C/</loc>
-    <lastmod>2022-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
   <url>
     <loc>https://www.stq555.com/categories/First/</loc>
