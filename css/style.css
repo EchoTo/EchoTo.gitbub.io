@@ -3840,7 +3840,8 @@ footer .footer-top {
 
 footer .copy {
     float: left;
-    margin-top: -70px;
+    margin-top: -40px;
+    margin-left: 170px;
 }
 
 footer .copy p {
