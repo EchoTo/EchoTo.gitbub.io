@@ -15088,15 +15088,15 @@ pre .deletion {
 }
 
 .note-warning {
-    background-color: #fdf8ea;
-    border-color: #f0ad4e;
+    background-color: aliceblue;
 }
 
 .note {
     padding: 0.75rem;
-    border-left: 0.35rem solid;
-    border-radius: 0.25rem;
-    margin: 1.5rem 0;
-    color: #3c4858;
-    font-size: 0.9rem;
+    border-left: 0.55rem solid;
+    border-radius: 1.25rem;
+    border-color: lightskyblue;
+    margin: -0.5rem 0;
+    color: black;
+    font-size: 1.3rem;
 }
