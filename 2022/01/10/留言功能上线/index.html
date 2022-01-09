@@ -51,6 +51,7 @@
                 <script>
                     window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')
                 </script>
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
                 <!-- Load these in the <head> for quicker IE8+ load times -->
                 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -158,11 +159,11 @@
 
     <!-- ============================ Header & Logo bar =========================== -->
       
-<section id="intro">
-    <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
+    <section id="intro">
+        <div class="container">
+            <div class="row col-md-offset-2">
+                <div class="col-md-8">
+                    <span class="post-meta">
       <time datetime="2022-01-09T17:05:15.000Z" itemprop="datePublished">
           2022-01-10
       </time>
@@ -173,16 +174,18 @@
     
     
 </span>
-                <h1>留言功能上线~</h1>
+                        <h1>
+                            留言功能上线~
+                        </h1>
+                </div>
             </div>
-        </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<h2 id="Valine留言功能上线"><a href="#Valine留言功能上线" class="headerlink" title="Valine留言功能上线~"></a>Valine留言功能上线~</h2><p>欢迎大家来评论</p>
+            <div class="col-md-8 col-md-offset-2">
+                <h2 id="Valine留言功能上线"><a href="#Valine留言功能上线" class="headerlink" title="Valine留言功能上线~"></a>Valine留言功能上线~</h2><p>欢迎大家来评论</p>
 
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
-        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+                    <div class="clearfix"></div>
+                    <hr class="nogutter">
+            </div>
+            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     
     <a class="pull-right" href="/2022/01/08/README/">
@@ -191,7 +194,8 @@
     
 </nav>
 
-        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+                <div class="col-md-8 col-md-offset-2 col-sm-24">
+                    <script type="text/javascript">
   /**
    * 搜狐畅言
    */
@@ -240,10 +244,23 @@
   */
 
 </script>
-</div>
-    </div>
-</section>
 
+                        <div id="vcomments"></div>
+<script>
+    new Valine({
+        el: '#comment',
+        notify: true,
+        verify: true,
+        appId: 'uqRS6rgdVAO0sqVAVmDbuepE-gzGzoHsz',
+        appKey: 'IATuRpiDzSLsw829xXTjmVMc',
+        placeholder: '欢迎大家来留言吧~',
+        path: window.location.pathname,
+        avatar: 'monsterid'
+    })
+</script>
+                </div>
+        </div>
+    </section>
 
       <!-- ============================ Footer =========================== -->
 
