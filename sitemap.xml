@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.stq555.com/2022/01/13/MySQL%E5%9F%BA%E7%A1%80/</loc>
+    
+    <lastmod>2022-01-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.stq555.com/2022/01/13/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
     
     <lastmod>2022-01-13</lastmod>
@@ -130,6 +139,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://www.stq555.com/tags/MySQL/</loc>
+    <lastmod>2022-01-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -141,6 +157,13 @@
   
   <url>
     <loc>https://www.stq555.com/categories/java/</loc>
+    <lastmod>2022-01-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.stq555.com/categories/MySQL/</loc>
     <lastmod>2022-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
