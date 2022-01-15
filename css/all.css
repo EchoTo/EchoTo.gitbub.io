@@ -1928,9 +1928,9 @@ pre {
     display: block;
     padding: 9.5px;
     margin: 0 0 10px;
-    font-size: 13px;
-    line-height: 1.42857143;
-    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333333;
     word-break: break-all;
     word-wrap: break-word;
     background-color: #fff;
@@ -15006,7 +15006,6 @@ nav.pagination {
 
 figure.highlight {
     background: #fff;
-    border: 1px solid black;
     margin-top: 15px;
     padding: 7px 15px 7px 10px;
     border-radius: 2px;
@@ -15050,7 +15049,7 @@ figure.highlight .gutter {
 
 figure.highlight .code {
     padding-left: 8px;
-    border-left: 1px solid #fff;
+    border-left: 1px solid black;
     color: #666;
 }
 
