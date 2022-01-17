@@ -6,10 +6,6 @@
     src: local('Open Sans Regular'), local('OpenSans-Regular'), url(../fonts/opensans.woff) format('woff');
 }
 
-* {
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-}
-
 .pace {
     -webkit-pointer-events: none;
     pointer-events: none;
@@ -64,7 +60,6 @@
 body {
     background-color: #FFFFFF;
     background-color: rgb(255, 255, 255);
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
     color: #666;
     font-style: normal;
     font-weight: 400;
@@ -97,7 +92,6 @@ h4,
 h5,
 h6 {
     margin-top: 0;
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
     font-weight: 400;
     font-weight: normal;
     color: #151515;
@@ -144,8 +138,6 @@ h4 span,
 h6 span,
 h6 span,
 .navbar .nav>li>span {
-    font-family: 'Georgia', "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-    font-style: italic;
     margin-left: 4px;
     margin-right: 3px;
     text-transform: none;
@@ -380,7 +372,6 @@ a.custom-button span {
     -moz-border-radius: 0;
     border-radius: 0;
     font-size: 14px;
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
     font-weight: 700;
     padding: 8px 18px;
     font-weight: 600;
