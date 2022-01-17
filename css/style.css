@@ -74,9 +74,7 @@ body {
 }
 
 p {
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
     color: #666;
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 30px;
@@ -196,8 +194,6 @@ blockquote {
 }
 
 blockquote p {
-    font-family: 'Georgia', "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-    font-style: italic;
     font-size: 15px;
 }
 
@@ -4111,4 +4107,11 @@ footer .footer_bottom {
 
 nav.pagination {
     display: block;
+}
+
+#hero p {
+    color: #333;
+    font-family: 'Georgia', serif, Helvetica, "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+    font-size: 33px;
+    display: inline-block;
 }
