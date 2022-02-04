@@ -1,59 +1,216 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="第一章 多线程学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那么现在详设计一个程序，边打游戏边听歌，要解决这个问题，就需要使用多进程或多线程  1.1并发与并行 并发：指两个或多个事件在同一个时间段内发生。 并行：指两个或多个事件在同一时刻发生。     注意：单核处理器的计算机肯定是不能并行处理多个任务的，只能是多个任务在单个CPU上并发运行。同理，线程也是一样的，从宏观角度上理解线">
-<meta property="og:type" content="article">
-<meta property="og:title" content="线程">
-<meta property="og:url" content="https://www.stq555.com/2022/01/11/%E7%BA%BF%E7%A8%8B/index.html">
-<meta property="og:site_name" content="ShanTianQi&#39;s Blog">
-<meta property="og:description" content="第一章 多线程学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那么现在详设计一个程序，边打游戏边听歌，要解决这个问题，就需要使用多进程或多线程  1.1并发与并行 并发：指两个或多个事件在同一个时间段内发生。 并行：指两个或多个事件在同一时刻发生。     注意：单核处理器的计算机肯定是不能并行处理多个任务的，只能是多个任务在单个CPU上并发运行。同理，线程也是一样的，从宏观角度上理解线">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708223907.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708224345.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708231151.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708232046.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708235938.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709000000.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709105448.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709111740.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210809181832.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810131523.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810164723.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174734.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174638.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174841.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810175943.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810212906.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810214141.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810214223.png">
-<meta property="article:published_time" content="2022-01-11T14:33:11.000Z">
-<meta property="article:modified_time" content="2022-01-11T15:16:52.980Z">
-<meta property="article:author" content="ShanTianQi">
-<meta property="article:tag" content="java">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708223907.png"><title>线程 | ShanTianQi's Blog</title><link ref="canonical" href="https://www.stq555.com/2022/01/11/%E7%BA%BF%E7%A8%8B/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
-var CONFIG = {
-  root: '/',
-  algolia: undefined,
-  assistSearch: undefined,
-  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
-  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
-  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
-  postWidget: {"endText":true},
-  nightMode: {"enable":true},
-  back2top: {"enable":true},
-  codeblock: {"style":"default","highlight":"light","wordWrap":false},
-  reward: false,
-  fancybox: false,
-  zoomImage: {"gapAside":"20px"},
-  galleryWaterfall: undefined,
-  lazyload: false,
-  pjax: undefined,
-  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
-  shortcuts: undefined,
-  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
-  sourcePath: {"js":"js","css":"css","images":"images"},
-};
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">ShanTianQi's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">线程</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-01-11</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-01-11</span></span></div></header><div class="post-body"><hr>
+<!DOCTYPE html>
+<html lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShanTianQi&#39;s Blog || 线程</title>
+    <meta name="author" content="ShanTianQi">
+    <meta name="description" content=" ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="/images/avatar.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
+</head>
+
+<body>
+
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">ShanTianQi's Blog</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>home</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>about</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>archives</span>
+        </a>
+        
+        <a href="/like/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>categories</span>
+        </a>
+        
+        <a href="/like/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>tags</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://en.korilin.com">
+            <span>
+                <a-icon type="compass" theme="filled" />
+            </span>
+            <span>英文博客</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>ShanTianQi's Blog</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">archives</div>
+                </div>
+            </a>
+            
+            <a href="/like/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">categories</div>
+                </div>
+            </a>
+            
+            <a href="/like/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">tags</div>
+                </div>
+            </a>
+            
+            <a target="_blank" rel="noopener" href="https://en.korilin.com">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="compass" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">英文博客</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>线程 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/1/11
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/java">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                java
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/java" style=color:#879cff>
+                    java
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <hr>
 <h1 id="第一章-多线程"><a href="#第一章-多线程" class="headerlink" title="第一章 多线程"></a>第一章 多线程</h1><p>学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那么现在详设计一个程序，边打游戏边听歌，要解决这个问题，就需要使用多进程或多线程</p>
 <hr>
 <h2 id="1-1并发与并行"><a href="#1-1并发与并行" class="headerlink" title="1.1并发与并行"></a>1.1并发与并行</h2><ul>
@@ -397,4 +554,96 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.1"><lin
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.indi.demo12ThreadPool;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RunnableImpl</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">&quot;创建了一个新的线程执行&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://www.stq555.com">ShanTianQi</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://www.stq555.com/2022/01/11/%E7%BA%BF%E7%A8%8B/">https://www.stq555.com/2022/01/11/%E7%BA%BF%E7%A8%8B/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://www.stq555.com/tags/java/">java</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/01/11/IO%E6%B5%81/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">IO流</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/01/11/%E9%9B%86%E5%90%88/"><span class="paginator-prev__text">集合</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">第一章 多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C"><span class="toc-number">1.1.</span> <span class="toc-text">1.1并发与并行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">1.2线程与进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%96%B9%E5%BC%8F%E4%B8%80"><span class="toc-number">1.3.</span> <span class="toc-text">1.3创建线程方式一</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E7%BA%BF%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">第二章 线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">2.1多线程原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2Thread%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">2.2Thread类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%96%B9%E5%BC%8F%E4%BA%8C"><span class="toc-number">2.3.</span> <span class="toc-text">2.3创建线程方式二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4Thread%E5%92%8CRunnable%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.4.</span> <span class="toc-text">2.4Thread和Runnable的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">2.5.</span> <span class="toc-text">2.5匿名内部类方式实现线程的创建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="toc-number">3.</span> <span class="toc-text">第三章    线程安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="toc-number">3.1.</span> <span class="toc-text">3.1线程安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-number">3.2.</span> <span class="toc-text">3.2线程同步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3%E5%90%8C%E6%AD%A5%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">3.3.</span> <span class="toc-text">3.3同步代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95"><span class="toc-number">3.4.</span> <span class="toc-text">3.4同步方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5Lock%E9%94%81"><span class="toc-number">3.5.</span> <span class="toc-text">3.5Lock锁</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-number">4.</span> <span class="toc-text">第四章    线程状态</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">4.1.</span> <span class="toc-text">4.1线程状态概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2Timed-Waiting-%E8%AE%A1%E6%97%B6%E7%AD%89%E5%BE%85"><span class="toc-number">4.2.</span> <span class="toc-text">4.2Timed Waiting(计时等待)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3BLOCKED-%E9%94%81%E9%98%BB%E5%A1%9E"><span class="toc-number">4.3.</span> <span class="toc-text">4.3BLOCKED(锁阻塞)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4Waiting-%E6%97%A0%E9%99%90%E7%AD%89%E5%BE%85"><span class="toc-number">4.4.</span> <span class="toc-text">4.4Waiting(无限等待)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text">第五章    等待唤醒机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF"><span class="toc-number">5.1.</span> <span class="toc-text">5.1线程间通讯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E7%AD%89%E5%BE%85%E5%94%A4%E9%86%92%E6%9C%BA%E5%88%B6"><span class="toc-number">5.2.</span> <span class="toc-text">5.2等待唤醒机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">5.3.</span> <span class="toc-text">5.3生产者与消费者问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">6.</span> <span class="toc-text">第六章    线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%80%9D%E6%83%B3%E6%A6%82%E8%BF%B0"><span class="toc-number">6.1.</span> <span class="toc-text">6.1线程池思想概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%A6%82%E5%BF%B5"><span class="toc-number">6.2.</span> <span class="toc-text">6.2线程池概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">6.3.</span> <span class="toc-text">6.3线程池的使用</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>ShanTianQi</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+
+    </div>
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
+    
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2018 - 2022 ShanTianQi&#39;s Blog
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @ShanTianQi
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            var that = this
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: 'hexo-theme-particle',      // The repository of store comments,
+        owner: 'korilin',
+        admin: ['korilin'],
+        language: 'en',
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: true  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+</body>
+
+</html>

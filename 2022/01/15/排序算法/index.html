@@ -1,74 +1,223 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="第一章   时间复杂度、空间复杂度 1.1时间复杂度分析 一.事后分析估算方法 123456789101112131415161718package com.priv.demo01test;&#x2F;&#x2F;栈内存开辟1块内存来执行public class Demo04Factorial &amp;#123;    public static void main(String[] args) &amp;#123;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="排序算法">
-<meta property="og:url" content="https://www.stq555.com/2022/01/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
-<meta property="og:site_name" content="ShanTianQi&#39;s Blog">
-<meta property="og:description" content="第一章   时间复杂度、空间复杂度 1.1时间复杂度分析 一.事后分析估算方法 123456789101112131415161718package com.priv.demo01test;&#x2F;&#x2F;栈内存开辟1块内存来执行public class Demo04Factorial &amp;#123;    public static void main(String[] args) &amp;#123;">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013085320.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013094937.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013103710.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013103856.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013120034.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013151535.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013151832.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013154835.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013155310.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013182159.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013182751.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013184911.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211014165835.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211014170821.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211014225156.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211015080241.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211015080554.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211015083357.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211015083726.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211015083858.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211015084005.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211015090412.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211015233933.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211015234418.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211016085300.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211016085451.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211016085649.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211016085813.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211016093558.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211016093914.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211016094248.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/54367657.png">
-<meta property="article:published_time" content="2022-01-15T06:42:27.000Z">
-<meta property="article:modified_time" content="2022-01-17T16:11:44.394Z">
-<meta property="article:author" content="ShanTianQi">
-<meta property="article:tag" content="算法">
-<meta property="article:tag" content="排序">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20211013085320.png"><title>排序算法 | ShanTianQi's Blog</title><link ref="canonical" href="https://www.stq555.com/2022/01/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
-var CONFIG = {
-  root: '/',
-  algolia: undefined,
-  assistSearch: undefined,
-  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
-  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
-  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
-  postWidget: {"endText":true},
-  nightMode: {"enable":true},
-  back2top: {"enable":true},
-  codeblock: {"style":"default","highlight":"light","wordWrap":false},
-  reward: false,
-  fancybox: false,
-  zoomImage: {"gapAside":"20px"},
-  galleryWaterfall: undefined,
-  lazyload: false,
-  pjax: undefined,
-  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
-  shortcuts: undefined,
-  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
-  sourcePath: {"js":"js","css":"css","images":"images"},
-};
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
-</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">ShanTianQi's Blog</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">排序算法</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2022-01-15</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2022-01-18</span></span></div></header><div class="post-body"><h1 id="第一章-时间复杂度、空间复杂度"><a href="#第一章-时间复杂度、空间复杂度" class="headerlink" title="第一章   时间复杂度、空间复杂度"></a>第一章   时间复杂度、空间复杂度</h1><hr>
+<!DOCTYPE html>
+<html lang="zh-CN ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShanTianQi&#39;s Blog || 排序算法</title>
+    <meta name="author" content="ShanTianQi">
+    <meta name="description" content=" ">
+    <meta name="keywords" content=" ">
+    <link rel="icon" href="/images/avatar.png">
+    <link rel="stylesheet" href="/css/antd.min.css">
+    
+    <link rel="stylesheet" href="/css/maiden-theme.css">
+    
+    <script src="/js/vue.js"></script>
+    <script src="/js/antd.min.js"></script>
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
+</head>
+
+<body>
+
+    <div id="loading"
+        style="height: 100vh; width: 100%; position: fixed;display: flex;z-index: 200; justify-content: space-between;">
+        <div id="loadleft" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div id="loadright" style="width: 50%;background-color: #ffffff;transition: width 0.6s ease-out;"></div>
+        <div
+            style="position: fixed; height: 100vh; width: 100%;display: flex;justify-content: center;align-items: center;">
+            <div id="loadcontent"
+                style="width:400px;height:400px;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px#a3ddfb; text-align:center;opacity:1;transition:opacity 0.3s ease-out;">
+                <div>
+                    <h2>LOADING...</h2>
+                    <p>加载过慢请开启缓存(浏览器默认开启)</p>
+                    <div>
+                        <img src="/dancingkitty.gif" alt="loading">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="layout">
+        <transition name="into">
+            <div v-show="show_page" style="display: none;">
+                <div id="menu_show">
+                     
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">ShanTianQi's Blog</span>
+        </a>
+        
+        <a href="/">
+            <span>
+                <a-icon type="home" theme="filled" />
+            </span>
+            <span>home</span>
+        </a>
+        
+        <a href="/about">
+            <span>
+                <a-icon type="idcard" theme="filled" />
+            </span>
+            <span>about</span>
+        </a>
+        
+        <a href="/archives">
+            <span>
+                <a-icon type="folder" theme="filled" />
+            </span>
+            <span>archives</span>
+        </a>
+        
+        <a href="/like/categories">
+            <span>
+                <a-icon type="book" theme="filled" />
+            </span>
+            <span>categories</span>
+        </a>
+        
+        <a href="/like/tags">
+            <span>
+                <a-icon type="tags" theme="filled" />
+            </span>
+            <span>tags</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://en.korilin.com">
+            <span>
+                <a-icon type="compass" theme="filled" />
+            </span>
+            <span>英文博客</span>
+        </a>
+        
+    </div>
+
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div :class="'title'" @click="menu_show=!menu_show">
+            <span style="margin-right: 10px;">
+                <a-icon type="appstore" theme="filled" />
+            </span>
+            <span>ShanTianQi's Blog</span>
+        </div>
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="home" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="idcard" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">about</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="folder" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">archives</div>
+                </div>
+            </a>
+            
+            <a href="/like/categories">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="book" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">categories</div>
+                </div>
+            </a>
+            
+            <a href="/like/tags">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="tags" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">tags</div>
+                </div>
+            </a>
+            
+            <a target="_blank" rel="noopener" href="https://en.korilin.com">
+                <div class="item">
+                    <div style="min-width:20px; max-width:50px; width: 10%">
+                        <a-icon type="compass" theme="filled" />
+                    </div>
+                    <div style="min-width:100px;max-width: 150%;width: 20%;">英文博客</div>
+                </div>
+            </a>
+            
+        </div>
+        <div class="curtain" v-show="menu_show"></div>
+    </div>
+
+</nav>
+                </div>
+
+                <div id="main">
+                     
+<link rel="stylesheet" href="/css/post-body.css">
+<div class="article">
+    <div>
+        <h1>排序算法 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <a-icon type="calendar" theme="filled" />
+            </span>
+            2022/1/15
+        </span>
+
+        
+        <span class="category">
+            <a href="/categories/算法">
+                <span class="icon">
+                    <a-icon type="book" theme="filled" />
+                </span>
+                算法
+            </a>
+        </span>
+        
+
+        
+
+        <span class="tags">
+            <span class="icon">
+                <a-icon type="tags" theme="filled" />
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/算法" style=color:#879cff>
+                    算法
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/排序" style=color:#1bccbc>
+                    排序
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+
+    <div class="content" v-pre>
+        <h1 id="第一章-时间复杂度、空间复杂度"><a href="#第一章-时间复杂度、空间复杂度" class="headerlink" title="第一章   时间复杂度、空间复杂度"></a>第一章   时间复杂度、空间复杂度</h1><hr>
 <h2 id="1-1时间复杂度分析"><a href="#1-1时间复杂度分析" class="headerlink" title="1.1时间复杂度分析"></a>1.1时间复杂度分析</h2><hr>
 <p><strong>一.事后分析估算方法</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.priv.demo01test;</span><br><span class="line"><span class="comment">//栈内存开辟1块内存来执行</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo04Factorial</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> begin = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">long</span> count = fun2(<span class="number">10</span>);</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;执行的时间为：&quot;</span>+(end-begin));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">fun2</span><span class="params">(<span class="keyword">long</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            result*=result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -406,4 +555,96 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.1"><lin
 <p>​    归并排序在归并的过程中，只有arr[i]&lt;arr[i+1]的时候才会交换位置，如果两个元素相等则不会交换位置，所以它并不会破坏稳定性，归并排序是稳定的。</p>
 <p><strong>快速排序：</strong></p>
 <p>​    快速排序需要一个基准值，在基准值的右侧找一个比基准值小的元素，在基准值的左侧找一个比基准值大的元素，然后交换这两个元素，此时会破坏稳定性，所以快速排序是一种不稳定的算法。</p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="https://www.stq555.com">ShanTianQi</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="https://www.stq555.com/2022/01/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">https://www.stq555.com/2022/01/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://www.stq555.com/tags/%E7%AE%97%E6%B3%95/">算法</a></span><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://www.stq555.com/tags/%E6%8E%92%E5%BA%8F/">排序</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2022/01/17/%E7%BA%BF%E6%80%A7dp/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">线性dp</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2022/01/14/JDBC/"><span class="paginator-prev__text">JDBC</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E3%80%81%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">1.</span> <span class="toc-text">第一章   时间复杂度、空间复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">1.1时间复杂度分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">1.2空间复杂度分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">第二章   排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1%E7%AE%80%E5%8D%95%E6%8E%92%E5%BA%8F"><span class="toc-number">2.1.</span> <span class="toc-text">2.1简单排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2Comparable%E6%8E%A5%E5%8F%A3%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.2.</span> <span class="toc-text">2.2Comparable接口介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">2.3.</span> <span class="toc-text">2.3冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-number">2.4.</span> <span class="toc-text">2.4选择排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-number">2.5.</span> <span class="toc-text">2.5插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-number">2.6.</span> <span class="toc-text">2.6希尔排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7%E9%80%92%E5%BD%92"><span class="toc-number">2.7.</span> <span class="toc-text">2.7递归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-number">2.8.</span> <span class="toc-text">2.8归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-number">2.9.</span> <span class="toc-text">2.9快速排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10%E6%8E%92%E5%BA%8F%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-number">2.10.</span> <span class="toc-text">2.10排序稳定性</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2022</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>ShanTianQi</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+
+    </div>
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <div id="comment">
+        <div id="gitalk-container">
+        </div>
+    </div>
+    
+</div>
+                     
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2018 - 2022 ShanTianQi&#39;s Blog
+            <span class="footer-icon">
+                <a-icon type="flag" theme="filled" /></span>
+            @ShanTianQi
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle Theme</a></div>
+        
+    </div>
+
+</footer>
+
+<script src="/js/highlight.min.js"></script>
+<script src="/js/particle.js"></script>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+    new Vue({
+        el: "#layout",
+        data: {
+            show_page: false,
+            onload_menu: false,
+            menu_show: false,
+            card_top: 100
+        },
+        created: function () {
+            var that = this
+            window.onload = function () {
+                that.show_page = true
+                document.getElementById("loadcontent").style.opacity = 0
+                setTimeout(function () {
+                    document.getElementById("loadleft").style.width = 0
+                    document.getElementById("loadright").style.width = 0
+                }, 300)
+                setTimeout(function () {
+                    document.getElementById("loading").style = "display:none"
+                }, 600)
+            }
+        },
+        mounted: function () {
+            var that = this
+            window.addEventListener('scroll', function (e) {
+                that.menu_show = false
+            })
+        },
+        methods: {
+            home_click: function () {
+                window.scrollTo({
+                    top: window.innerHeight - 80,
+                    behavior: "smooth",
+                });
+            }
+        }
+    })
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: 'hexo-theme-particle',      // The repository of store comments,
+        owner: 'korilin',
+        admin: ['korilin'],
+        language: 'en',
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: true  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+</body>
+
+</html>
