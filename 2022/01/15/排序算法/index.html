@@ -217,11 +217,17 @@
 
     <section id="intro">
         <div class="container" style="background-color: #fff;">
-            <!-- Table of Contents -->
-
-                <div class="row col-md-offset-2">
-                    <div class="col-md-8">
-                        <span class="post-meta">
+            <aside id="sidebar">
+                <div id="toc" class="toc-article">
+                    <strong class="toc-title">contents</strong>
+                    
+                        <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E3%80%81%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">第一章   时间复杂度、空间复杂度</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.1时间复杂度分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.2空间复杂度分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">第二章   排序</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-1%E7%AE%80%E5%8D%95%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1简单排序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-2Comparable%E6%8E%A5%E5%8F%A3%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2Comparable接口介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-3%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">2.3冒泡排序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-4%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">2.4选择排序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">2.5插入排序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-6%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">2.6希尔排序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-7%E9%80%92%E5%BD%92"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">2.7递归</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-8%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">2.8归并排序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-9%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">2.9快速排序</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-10%E6%8E%92%E5%BA%8F%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">2.10排序稳定性</span></a></li></ol></li></ol>
+                            
+                </div>
+            </aside>
+            <div class="row col-md-offset-2">
+                <div class="col-md-8">
+                    <span class="post-meta">
       <time datetime="2022-01-15T06:42:27.000Z" itemprop="datePublished">
           2022-01-15
       </time>
@@ -234,13 +240,13 @@
     
     
 </span>
-                            <h1>
-                                排序算法
-                            </h1>
-                    </div>
+                        <h1>
+                            排序算法
+                        </h1>
                 </div>
-                <div class="col-md-8 col-md-offset-2">
-                    <h1 id="第一章-时间复杂度、空间复杂度"><a href="#第一章-时间复杂度、空间复杂度" class="headerlink" title="第一章   时间复杂度、空间复杂度"></a>第一章   时间复杂度、空间复杂度</h1><hr>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <h1 id="第一章-时间复杂度、空间复杂度"><a href="#第一章-时间复杂度、空间复杂度" class="headerlink" title="第一章   时间复杂度、空间复杂度"></a>第一章   时间复杂度、空间复杂度</h1><hr>
 <h2 id="1-1时间复杂度分析"><a href="#1-1时间复杂度分析" class="headerlink" title="1.1时间复杂度分析"></a>1.1时间复杂度分析</h2><hr>
 <p><strong>一.事后分析估算方法</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.priv.demo01test;</span><br><span class="line"><span class="comment">//栈内存开辟1块内存来执行</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo04Factorial</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> begin = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">long</span> count = fun2(<span class="number">10</span>);</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;执行的时间为：&quot;</span>+(end-begin));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">fun2</span><span class="params">(<span class="keyword">long</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            result*=result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -579,15 +585,15 @@
 <p><strong>快速排序：</strong></p>
 <p>​    快速排序需要一个基准值，在基准值的右侧找一个比基准值小的元素，在基准值的左侧找一个比基准值大的元素，然后交换这两个元素，此时会破坏稳定性，所以快速排序是一种不稳定的算法。</p>
 
-                        <div class="clearfix"></div>
-                        <hr class="nogutter">
-                        <p class="note note-warning">
+                    <div class="clearfix"></div>
+                    <hr class="nogutter">
+                    <p class="note note-warning">
 
     本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
 
 </p>
-                </div>
-                <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+            </div>
+            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     <a class="pull-left" href="/2022/01/17/%E7%BA%BF%E6%80%A7dp/" style="float: left;">
         ← 线性dp
@@ -600,8 +606,8 @@
     
 </nav>
 
-                    <div class="col-md-8 col-md-offset-2 col-sm-24">
-                        <script type="text/javascript">
+                <div class="col-md-8 col-md-offset-2 col-sm-24">
+                    <script type="text/javascript">
   /**
    * 搜狐畅言
    */
@@ -651,7 +657,7 @@
 
 </script>
 
-                            <div id="vcomments"></div>
+                        <div id="vcomments"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -664,7 +670,7 @@
         avatar: 'monsterid'
     })
 </script>
-                    </div>
+                </div>
 
         </div>
     </section>
