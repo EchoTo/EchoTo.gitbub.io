@@ -1,481 +1,857 @@
-<!DOCTYPE html>
-<!--[if lte IE 8 ]>
-<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--
-***************  *      *     *
-      8          *    *       *
-      8          *  *         *
-      8          **           *
-      8          *  *         *
-      8          *    *       *
-      8          *      *     *
-      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
--->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<!--<![endif]-->
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
 
-    <head>
-        <title>
-            
-                        ShanTianQi&#39;s Blog
-        </title>
-        <!-- Meta data -->
-        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="generator" content="ShanTianQi's Blog">
-        <meta name="author" content="ShanTianQi">
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ShanTianQi&#39;s Blog">
+    <meta name="description" content="ShanTianQi&#39;s Blog">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
-        <!-- Favicon, (keep icon in root folder) -->
-        <link rel="Shortcut Icon" href="/img/bitbug_favicon.ico" type="image/ico">
 
-        <link rel="alternate" href="/atom.xml" title="ShanTianQi&#39;s Blog" type="application/atom+xml">
-        <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
-        
-            <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
-            
+    <title>ShanTianQi&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-                <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
 
-                <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-                <script src="/js/jquery-1.11.1.min.js"></script>
-                <script>
-                    window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')
-                </script>
-                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-                <!-- Load these in the <head> for quicker IE8+ load times -->
-                <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
+</head>
 
-                <style>
-                    .col-md-8.col-md-offset-2.opening-statement img {
-                        display: none;
-                    }
-                </style>
-    </head>
-<!--
-<body class="home-template">
--->
-<body id="index" class="lightnav animsition">
 
-      <!-- ============================ Off-canvas navigation =========================== -->
 
-<div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
-    <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-        <img src="/img/close.png" alt="Close" />
-    </div>
-    <!-- Lists in Slidebars -->
-    <ul class="sb-menu">
-        <li><a href="/" class="animsition-link" title="Home">首页</a></li>
-        <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
-        <!-- Dropdown Menu -->
-        
-                
-                    <li>
-                        <a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
-                        <ul class="sb-submenu">
-                            
-                                <li>
-                                    <a href="/categories/First/" class="animsition-link">
-                                        First<small>(2)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/MySQL/" class="animsition-link">
-                                        MySQL<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/daily/" class="animsition-link">
-                                        daily<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/java/" class="animsition-link">
-                                        java<small>(7)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/算法/动态规划/" class="animsition-link">
-                                        动态规划<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/算法/排序/" class="animsition-link">
-                                        排序<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/板子、算法/" class="animsition-link">
-                                        板子、算法<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/算法/" class="animsition-link">
-                                        算法<small>(2)</small></a>
-                                </li>
-                                
-                        </ul>
-                    </li>
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
                     
-                        <li><a href="/archives/link.html" class="animsition-link" title="about">友链</a></li>
-                        <li><a href="/archives/about.html" class="animsition-link" title="about">关于</a></li>
-    </ul>
-    <!-- Lists in Slidebars -->
-    <ul class="sb-menu secondary">
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">ShanTianQi&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">ShanTianQi&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
         
     </ul>
 </div>
 
-<!-- ============================ END Off-canvas navigation =========================== -->
 
-<!-- ============================ #sb-site Main Page Wrapper =========================== -->
-
-<div id="sb-site">
-    <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
-
-    <!-- ============================ Header & Logo bar =========================== -->
-
-    <div id="navigation" class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <!-- Info-bar -->
-                <nav>
-                    <ul class="nav">
-                        <li>
-                            <a href="/" class="animsition-link">
-                                ShanTianQi's Blog
-                            </a>
-                        </li>
-                        <!-- 
-                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                             -->
-                    </ul>
-                </nav>
-                <!--// Info-bar -->
-            </div>
-            <!-- // .container -->
-            <div class="learnmore sb-toggle-right">More</div>
-            <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar before"></span>
-                <span class="icon-bar main"></span>
-                <span class="icon-bar after"></span>
-                </button>
         </div>
-        <!-- // .navbar-inner -->
-    </div>
 
-    <!-- ============================ Header & Logo bar =========================== -->
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.png) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                            <p style="font-size: 33px;">
-                                
-                            </p>
-                            
-                            <p style="font-size: 33px;">
-                                每一个不曾起舞的日子都是对生命的辜负。
-                            </p>
-                            
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-<!-- ============================ Content =========================== -->
-
-<section id="intro">
-    <div class="container">
         
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/02/04/快排-归并/">
-                                快排&&归并
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-02-04T03:55:38.000Z" itemprop="datePublished">
-          2022-02-04
-      </time>
-    
-    
-    | 
-    <a href='/tags/板子、算法/'>板子、算法</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
 
-                        <!-- <p>
-                      
-                        快速排序
-模板：1234567891011121314151617181920public static void quickSort(int q[],int l,int r)&#123;    if (r &lt;= l)return;    int standard = q[l];    int left = l - 1;    int right = r + 1;    while(left &lt; right)&#123;  
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/02/04/快排-归并/">
-                                    Read More...</a>
-                            </p>
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<style>
+    .carousel-control {
+        width: 45px;
+        height: 45px;
+        line-height: 55px;
+        border-radius: 45px;
+        background: transparent;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    #prev-cover {
+        position: absolute;
+        top: 48%;
+        left: 8px;
+    }
+
+    #next-cover {
+        position: absolute;
+        top: 48%;
+        right: 8px;;
+    }
+
+    #prev-cover i {
+        margin-right: 3px;
+    }
+
+    #next-cover i {
+        margin-left: 3px;
+    }
+
+    .carousel-control:hover {
+        background-color: rgba(0, 0, 0, .4);
+    }
+
+    .carousel-control i {
+        color: #fff;
+        font-size: 2.4rem;
+    }
+</style>
+
+
+
+<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
+    
+
+    <div class="carousel-item  white-text bg-cover about-cover">
+        <div class="container">
+            <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    subtitle
+                
+            </div>
+
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: [ 
                             
+                                "从来没有真正的绝境, 只有心灵的迷途",
+                            
+                                "Never really desperate, only the lost of the soul",
+                            
+                        ],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+</script>
+
+
+
+            <div class="cover-btns">
+                <a href="#indexCard" class="waves-effect waves-light btn">
+                    <i class="fa fa-angle-double-down"></i>开始阅读
+                </a>
+
+                
+                    <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light btn" target="_blank">
+                        <i class="fab fa-github-alt"></i>Github
+                    </a>
+                
+            </div>
+            <div class="cover-social-link">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script>
+    $(function () {
+        let coverSlider = $('.carousel');
+
+        //用户触摸轮播自动 restartPlay 是否生效
+        let initUserPressedOrDraggedActive = false
+
+        //用户触摸轮播自动 restartPlay
+        function initUserPressedOrDragged(instance) {
+            setInterval(() => {
+                if (instance.pressed || instance.dragged) {
+                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
+                    restartPlay()
+                }
+            }, 1000)
+        }
+
+        coverSlider.carousel({
+            duration: Number('120'),
+            fullWidth: true,
+            indicators: 'true' === 'true',
+            onCycleTo() {
+                if (!initUserPressedOrDraggedActive) {
+                    // console.log('initUserPressedOrDraggedActive')
+                    initUserPressedOrDragged(this)
+                    initUserPressedOrDraggedActive = true
+                }
+            },
+        })
+
+        let carouselIntervalId;
+        
+        // Loop to call the next cover article picture.
+        let autoCarousel = function () {
+            carouselIntervalId = setInterval(function () {
+                coverSlider.carousel('next');
+            }, 5000);
+        };
+        autoCarousel();
+        
+
+        function restartPlay() {
+            
+            clearInterval(carouselIntervalId);
+            autoCarousel();
+            
+        };
+
+        
+        // prev and next cover post.
+        $('#prev-cover').click(function () {
+            coverSlider.carousel('prev');
+            restartPlay();
+        });
+        $('#next-cover').click(function () {
+            coverSlider.carousel('next');
+            restartPlay();
+        });
+        
+    });
+</script>
+
+
+
+<main class="content">
+
+    
+    <div id="indexCard" class="index-card">
+        <div class="container ">
+            <div class="card">
+                <div class="card-content">
+                    
+                        <div class="dream">
+    
+    <div class="title center-align">
+        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;我的梦想
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
+            不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
+        </div>
+    </div>
+</div>
+
+                    
+
+                    
+
+                    
+
+                    
+                    <div id="recommend-sections" class="recommend">
+                        
+
+
+
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+                    
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/27/日常分享/">
-                                日常分享
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-27T10:09:28.000Z" itemprop="datePublished">
-          2022-01-27
-      </time>
+        </div>
+    </div>
     
-    
-    | 
-    <a href='/tags/daily/'>daily</a>,
-    
-    <a href='/tags/心情分享/'>心情分享</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
 
-                        <!-- <p>
-                      
-                        ​       最近一直在拖更，也是因为这几天压力有点大吧，刚刚接触一些网站的比赛，像Codeforces、牛客的一些，刚开始直接爆0，签到题甚至都写不出来，唉~
-​       心情就不是很好，昨天打了一场牛客，有一道题，非常简单，但是就一直Wa，我心态都崩了。今天试了一下，把int改成long直接AC了，这居然看不出来。菜死了
-​        刚刚打完了一场相当于考核的一个比赛吧，也是很多题感觉都有思路，但是还是过不掉，就很难受。
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/27/日常分享/">
-                                    Read More...</a>
-                            </p>
+    
+
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/02/04/%E5%BF%AB%E6%8E%92-%E5%BD%92%E5%B9%B6/">
+                        <div class="card-image">
                             
+                            
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="快排&amp;&amp;归并">
+                            
+                            <span class="card-title">快排&amp;&amp;归并</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                快速排序
+模板：1234567891011121314151617181920public static void quickSort(int q[],int l,int r)&#123;    if (r &lt;= l)return; 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-04
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E6%9D%BF%E5%AD%90%E3%80%81%E7%AE%97%E6%B3%95/" class="post-category">
+                                    板子、算法
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%9D%BF%E5%AD%90%E3%80%81%E7%AE%97%E6%B3%95/">
+                            <span class="chip bg-color">板子、算法</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/17/线性dp/">
-                                线性dp
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-17T15:46:18.000Z" itemprop="datePublished">
-          2022-01-17
-      </time>
-    
-    
-    | 
-    <a href='/tags/算法/'>算法</a>,
-    
-    <a href='/tags/动态规划/'>动态规划</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/27/%E6%97%A5%E5%B8%B8%E5%88%86%E4%BA%AB/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="日常分享">
+                            
+                            <span class="card-title">日常分享</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        模型一：LIS问题(最长上升子序列)
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                ​       最近一直在拖更，也是因为这几天压力有点大吧，刚刚接触一些网站的比赛，像Codeforces、牛客的一些，刚开始直接爆0，签到题甚至都写不出来，唉~
+​       心情就不是很好，昨天打了一场牛客，有一道题，非常简单，但是就
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/daily/" class="post-category">
+                                    daily
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/daily/">
+                            <span class="chip bg-color">daily</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%BF%83%E6%83%85%E5%88%86%E4%BA%AB/">
+                            <span class="chip bg-color">心情分享</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/17/%E7%BA%BF%E6%80%A7dp/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="线性dp">
+                            
+                            <span class="card-title">线性dp</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                模型一：LIS问题(最长上升子序列)
 问题描述：给定一个长度为N的数列A，求数值单调递增的子序列长度最长为多少。
 状态表示：f[i]表示以A[i]为结尾的”最长上升子序列”的长度。
-状态转移方程：f[i] = max{f[j] + 1} (0 &lt;= j &lt; i，A[j] &lt; A[i])
-目标：max{f[i]} (1 &lt;= i &lt;= N)
-
-练习题：
-给定一个长度为 N 的数列，求数值严格单调递增的子序列的
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/17/线性dp/">
-                                    Read More...</a>
-                            </p>
+状态转移方程：f[i] = max{f[j] + 1} (
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                                
+                                <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-category">
+                                    动态规划
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E7%AE%97%E6%B3%95/">
+                            <span class="chip bg-color">算法</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                            <span class="chip bg-color">动态规划</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/15/排序算法/">
-                                排序算法
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-15T06:42:27.000Z" itemprop="datePublished">
-          2022-01-15
-      </time>
-    
-    
-    | 
-    <a href='/tags/算法/'>算法</a>,
-    
-    <a href='/tags/排序/'>排序</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="排序算法">
+                            
+                            <span class="card-title">排序算法</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        第一章   时间复杂度、空间复杂度
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                第一章   时间复杂度、空间复杂度
 1.1时间复杂度分析
 一.事后分析估算方法
-123456789101112131415161718package com.priv.demo01test;//栈内存开辟1块内存来执行public class Demo04Factorial &#123;    public static void main(String[] args) &#123;        long begin = System
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/15/排序算法/">
-                                    Read More...</a>
-                            </p>
+123456789101112131415161718package com.priv.demo01test;//栈内存开辟1块内存来执行public clas
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-15
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                                
+                                <a href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/" class="post-category">
+                                    排序
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E7%AE%97%E6%B3%95/">
+                            <span class="chip bg-color">算法</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                            <span class="chip bg-color">排序</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/14/JDBC/">
-                                JDBC
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-14T05:26:23.000Z" itemprop="datePublished">
-          2022-01-14
-      </time>
-    
-    
-    | 
-    <a href='/tags/java/'>java</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/14/JDBC/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JDBC">
+                            
+                            <span class="card-title">JDBC</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        第一章  JDBC简介
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                第一章  JDBC简介
 1.1概念
 概念：Java DataBase Connectivity   Java 数据库连接  Java语言操作数据库
-JDBC本质：其实是官方(SUN公司)定义的一套操作所有关系型数据库的规则，即接口。各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以使用这套接口(JDBC)编程，真正执行的代码是驱动jar包中的实现类。
-
-
-1.2步骤1.导入驱动jar包
-
-复制jar包到项目的libs目录下
-
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/14/JDBC/">
-                                    Read More...</a>
-                            </p>
+JDBC本质：其实是官方(SUN公司)定义的一套操作所有关系型数据库的规则，即接口。各个数据
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/java/" class="post-category">
+                                    java
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/13/MySQL基础/">
-                                MySQL基础
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-13T05:47:13.000Z" itemprop="datePublished">
-          2022-01-13
-      </time>
-    
-    
-    | 
-    <a href='/tags/MySQL/'>MySQL</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/13/MySQL%E5%9F%BA%E7%A1%80/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="MySQL基础">
+                            
+                            <span class="card-title">MySQL基础</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        第一章    初识MySQL
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                第一章    初识MySQL
 1.1相关概念保存数据的容器：数组、集合、文件
 使用数据库的好处：
 
@@ -483,101 +859,107 @@ JDBC本质：其实是官方(SUN公司)定义的一套操作所有关系型数�
 使用完整的管理系统统一管理，易于查询
 
 1.DB
-数据库(database)：存储数据的”仓库”。它保存了一系列有组织的数据。
-2.DBMS
-数据库管理系统(Database Management System)。数据库是通过DBMS创建和操作的容器。
-常见的DBMS：MySQL、Oracle、DB2、SqlServer等
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/13/MySQL基础/">
-                                    Read More...</a>
-                            </p>
+数据库(database)：存储数据的”仓库”。它保存了一系列有组织的数据
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/MySQL/">
+                            <span class="chip bg-color">MySQL</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/13/Lambda表达式/">
-                                Lambda表达式
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-13T05:30:56.000Z" itemprop="datePublished">
-          2022-01-13
-      </time>
-    
-    
-    | 
-    <a href='/tags/java/'>java</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/13/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Lambda表达式">
+                            
+                            <span class="card-title">Lambda表达式</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        第一章    Lambda表达式
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                第一章    Lambda表达式
 1.1函数式编程思想概述
-在数学中，函数就是有输入量、输出量的一套计算方案，也就是”拿什么东西做什么事情”。相对而言，面向对象过分强调”必须通过对象的形式来做事情”，而函数式思想则尽量忽略面向对象的复杂语法–强调做什么，而不是以什么形式做。
-面向对象的思想：
-
-做一件事情，找一个能解决这个事情的对象，调用对象的方法，完成事情。
-
-函数式编程思想：
-
-只要能获取到结果，谁去做的，怎么做的都不重要，重视的是
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/13/Lambda表达式/">
-                                    Read More...</a>
-                            </p>
+在数学中，函数就是有输入量、输出量的一套计算方案，也就是”拿什么东西做什么事情”。相对而言，面向对象过分强调”必须通过对象的形式来做事情”，而函数式思想则尽量忽略面向对象的复杂语法
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/java/" class="post-category">
+                                    java
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/12/Junit、反射、注解、枚举类/">
-                                Junit、反射、注解、枚举类
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-12T09:26:20.000Z" itemprop="datePublished">
-          2022-01-12
-      </time>
-    
-    
-    | 
-    <a href='/tags/java/'>java</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/12/Junit%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E6%B3%A8%E8%A7%A3%E3%80%81%E6%9E%9A%E4%B8%BE%E7%B1%BB/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Junit、反射、注解、枚举类">
+                            
+                            <span class="card-title">Junit、反射、注解、枚举类</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        第一章    Junit单元测试
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                第一章    Junit单元测试
 1.1概述
 测试分类：
 
@@ -587,202 +969,212 @@ JDBC本质：其实是官方(SUN公司)定义的一套操作所有关系型数�
 
 1.2使用步骤Junit(白盒测试)
 步骤：
-1.定义一个测试类(测试用例)
-建议：测试类名：被测试的类名Test
-​           包名：xxx.xxx.xx.test
-2.定义测试方法：可以独立运行
-建议：方法名：test+测试的方法名
-​   
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/12/Junit、反射、注解、枚举类/">
-                                    Read More...</a>
-                            </p>
+1.定义一
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/java/" class="post-category">
+                                    java
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/12/File类、递归/">
-                                File类、递归
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-12T09:22:03.000Z" itemprop="datePublished">
-          2022-01-12
-      </time>
-    
-    
-    | 
-    <a href='/tags/java/'>java</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/12/File%E7%B1%BB%E3%80%81%E9%80%92%E5%BD%92/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="File类、递归">
+                            
+                            <span class="card-title">File类、递归</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        第一章    File类
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                第一章    File类
 1.1概述java.io.File类时文件和目录路径名的抽象表示，主要用于文件和目录的创建、查找和删除等操作。
-java把电脑中的文件和文件夹(目录)封装为了一个FiLe类,我们可以使用FiLe类对文件和文件夹进行操作
-我们可以使用File类的方法
-
- 创建一个文件/文件夹
- 删除文件/文件夹
- 获取文件/文件夹
- 判断文件/文件夹是否存在
- 对文件夹进行遍历
- 获取文件的大小
-
-File类是一个与系统无关的类
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/12/File类、递归/">
-                                    Read More...</a>
-                            </p>
+java把电脑中的文件和文件夹(目录)封装为了一个FiLe类,我们可以使用FiLe类对文件和文件夹进行
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/java/" class="post-category">
+                                    java
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/11/IO流/">
-                                IO流
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-11T15:21:40.000Z" itemprop="datePublished">
-          2022-01-11
-      </time>
-    
-    
-    | 
-    <a href='/tags/java/'>java</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/11/IO%E6%B5%81/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="IO流">
+                            
+                            <span class="card-title">IO流</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
 第一章    IO概述
-1.1什么是IO生活中，你肯定经历过这样的场景。当你编辑一个文本文件，忘记了ctrl+s，可能文件就白白编辑了。当你电脑上插入一个U盘，可以把一个视频，拷贝到你的电脑硬盘里。那么数据都是在哪些设备上的呢?键盘、内存、硬盘、外接设备等等。
-我们把这种数据的传输，可以看做是一种数据的流动，按照流动的方向，以内存为基准，分为输入input和输出output，即流向内存是输入流，流出内存的输出流。
-Java中I/O操作
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/11/IO流/">
-                                    Read More...</a>
-                            </p>
+1.1什么是IO生活中，你肯定经历过这样的场景。当你编辑一个文本文件，忘记了ctrl+s，可能文件就白白编辑了。当你电脑上插入一个U盘，可以把一个视频，拷贝到你的电脑硬盘里。那么数据都是在哪些设备上的呢?键盘、内存
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/java/" class="post-category">
+                                    java
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/11/线程/">
-                                线程
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-11T14:33:11.000Z" itemprop="datePublished">
-          2022-01-11
-      </time>
-    
-    
-    | 
-    <a href='/tags/java/'>java</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/11/%E7%BA%BF%E7%A8%8B/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="线程">
+                            
+                            <span class="card-title">线程</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
 第一章 多线程学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那么现在详设计一个程序，边打游戏边听歌，要解决这个问题，就需要使用多进程或多线程
 
 1.1并发与并行
 并发：指两个或多个事件在同一个时间段内发生。
-并行：指两个或多个事件在同一时刻发生。
-
-
-
-
-注意：单核处理器的计算机肯定是不能并行处理多个任务的，只能是多个任务在单个CPU上并发运行。同理，线程也是一样的，从宏观角度上理解线程是并行运行的，但是从微观角度上分析却是
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/11/线程/">
-                                    Read More...</a>
-                            </p>
+并行：指两个或多个事
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/java/" class="post-category">
+                                    java
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 opening-statement">
-                    <div class="col-md-4">
-                        <h3>
-                            <a href="/2022/01/11/集合/">
-                                集合
-                            </a>
-                        </h3>
-                        <span>
-                        <span class="post-meta">
-      <time datetime="2022-01-11T04:17:54.000Z" itemprop="datePublished">
-          2022-01-11
-      </time>
-    
-    
-    | 
-    <a href='/tags/java/'>java</a>
-    
-    
-</span>
-                    </span>
-                    </div>
-                    <div class="col-md-8" style="margin-top: 36px;">
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/11/%E9%9B%86%E5%90%88/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="集合">
+                            
+                            <span class="card-title">集合</span>
+                        </div>
+                    </a>
 
-                        <!-- <p>
-                      
-                        
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
 第一章 Collection集合(单列集合)1.1集合概述
 
 集合：集合是Java中提供的一种容器，可以用来存储多个数据。
@@ -790,118 +1182,377 @@ Java中I/O操作
 集合和数组的区别：
 1.数组的长度是固定的。
    集合的长度是可变的。
-2.数组中存储的是同一种元素，可以存储基本类型数据值。
-   集合存储的都是对象，而且对象的类型可以不一致，在开发中一般当对象多的时候，使用集合进行存储。
-
-1.2集合框架
-集合按照其存储结构可以分为两大类：分别是==单列集合==(jav
-                      
-                    </p> -->
-                        
-                            <p class="pull-right readMore">
-                                <a href="/2022/01/11/集合/">
-                                    Read More...</a>
-                            </p>
+2.数组中存储的是同一种元素，可以存储
                             
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/java/" class="post-category">
+                                    java
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
                     </div>
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
+              <!-- 隐藏某个文章 -->
             
-                <nav class="pagination" role="pagination">
-                    
-                            <a class="pull-right" href="/page/2/">Older Posts →</a>
-                                
-                </nav>
-    </div>
-</section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>
-                
-            </p>
+        </div>
+    </article>
+
+</main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
         </div>
     </div>
-</section>
-<!-- ============================ END Content =========================== -->
-      <!-- ============================ Footer =========================== -->
-
-<footer>
-    <div class="container">
-        <div class="copy">
-            <p>
-                &copy; 2022
-                <script>
-                    new Date().getFullYear() > 2022 && document.write("-" + new Date().getFullYear());
-                </script>, Content By
-                ShanTianQi. All Rights Reserved.
-            </p>
-            <div class="statistics">
-
-    <!-- 不蒜子统计PV -->
-    <span id="busuanzi_container_site_pv" style="display: inline;">
-        本站总访问量
-        <span id="busuanzi_value_site_pv"></span>次
-    </span>
+</div>
 
 
-    <!-- 不蒜子统计UV -->
-    <span id="busuanzi_container_site_uv" style="display: inline;">
-        本站访客数
-        <span id="busuanzi_value_site_uv"></span>人次
-    </span>
 
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <a href="/about" target="_blank">ShanTianQi</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
 
 </div>
-                <p style="margin-bottom: 30px;"><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/" style="color: #767D84">辽ICP备2021012349号-1</a></p>
-        </div>
-        <div class="clearfix"> </div>
     </div>
 </footer>
 
-<!-- ============================ END Footer =========================== -->
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
 <script type="text/javascript">
-    var resizeHero = function () {
-        var hero = $(".cover,.heightblock"),
-            window1 = $(window);
-        hero.css({
-            "height": window1.height()
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
         });
     };
 
-    resizeHero();
-
-    $(window).resize(function () {
-        resizeHero();
-    });
-</script>
-<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/js/scripts.js"></script><!-- Theme scripts -->
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$('#intro').find('img').each(function(){
-  var alt = this.alt;
-
-  if (alt){
-    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
-  }
-
-  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
 </script>
 
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
 
 
-      
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
 </body>
+
 </html>
