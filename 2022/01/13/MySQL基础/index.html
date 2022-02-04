@@ -1,215 +1,242 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" color-mode=light>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>MySQL基础 - ShanTianQi&#39;s Blog</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="google" content="notranslate" />
-  
-  <meta name="description" content="第一章    初识MySQL
-1.1相关概念保存数据的...">
-  <meta name="author" content="ShanTianQi">
-  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
-  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
-  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
-  
-    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
-    <meta rel="msapplication-TileColor" content="#000000">
-  
-
-  
-<link rel="stylesheet" href="/css/style.css">
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
 
 
-  
-    
-<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+    <head>
+        <title>
+            
+                MySQL基础 |
+                    
+                        ShanTianQi&#39;s Blog
+        </title>
+        <!-- Meta data -->
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="ShanTianQi's Blog">
+        <meta name="author" content="ShanTianQi">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
 
-  
+        <!-- Favicon, (keep icon in root folder) -->
+        <link rel="Shortcut Icon" href="/img/bitbug_favicon.ico" type="image/ico">
 
-  
-    
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
-
-  
-
-  
-    
-      
+        <link rel="alternate" href="/atom.xml" title="ShanTianQi&#39;s Blog" type="application/atom+xml">
+        <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
         
+            <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+            
+
+                <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+                <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+                <script src="/js/jquery-1.11.1.min.js"></script>
+                <script>
+                    window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')
+                </script>
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+                <!-- Load these in the <head> for quicker IE8+ load times -->
+                <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+                <style>
+                    .col-md-8.col-md-offset-2.opening-statement img {
+                        display: none;
+                    }
+                </style>
+    </head>
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+<div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+    <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+        <img src="/img/close.png" alt="Close" />
+    </div>
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu">
+        <li><a href="/" class="animsition-link" title="Home">首页</a></li>
+        <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
+        <!-- Dropdown Menu -->
         
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
-
-      
+                
+                    <li>
+                        <a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
+                        <ul class="sb-submenu">
+                            
+                                <li>
+                                    <a href="/categories/First/" class="animsition-link">
+                                        First<small>(2)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/MySQL/" class="animsition-link">
+                                        MySQL<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/daily/" class="animsition-link">
+                                        daily<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/java/" class="animsition-link">
+                                        java<small>(7)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/动态规划/" class="animsition-link">
+                                        动态规划<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/排序/" class="animsition-link">
+                                        排序<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/板子、算法/" class="animsition-link">
+                                        板子、算法<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/" class="animsition-link">
+                                        算法<small>(2)</small></a>
+                                </li>
+                                
+                        </ul>
+                    </li>
+                    
+                        <li><a href="/archives/link.html" class="animsition-link" title="about">友链</a></li>
+                        <li><a href="/archives/about.html" class="animsition-link" title="about">关于</a></li>
+    </ul>
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu secondary">
         
-        
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+    </ul>
+</div>
 
-      
-  
+<!-- ============================ END Off-canvas navigation =========================== -->
 
-  <script>
-    var CONFIG = window.CONFIG || {};
-    var ZHAOO = window.ZHAOO || {};
-    CONFIG = {
-      isHome: false,
-      fancybox: true,
-      pjax: false,
-      loading: {
-        gif: '/images/theme/loading.gif',
-        lottie: ''
-      },
-      lazyload: {
-        enable: true,
-        only_post: 'false',
-        loading: {
-          gif: '/images/theme/loading.gif',
-          lottie: ''
-        }
-      },
-      donate: {
-        enable: true,
-        alipay: 'https://pic.izhaoo.com/alipay.jpg',
-        wechat: 'https://pic.izhaoo.com/wechat.jpg'
-      },
-      galleries: {
-        enable: true
-      },
-      fab: {
-        enable: true,
-        always_show: false
-      },
-      carrier: {
-        enable: true
-      },
-      daovoice: {
-        enable: false
-      },
-      preview: {
-        background: {
-          default: '',
-          api: ''
-        },
-        motto: {
-          default: '我在开了灯的床头下，想问问自己的心啊。',
-          typing: true,
-          api: 'https://v2.jinrishici.com/one.json',
-          data_contents: '["data","content"]'
-        },
-      },
-      qrcode: {
-        enable: true,
-        type: 'url',
-        image: 'https://pic.izhaoo.com/weapp-code.jpg',
-      },
-      toc: {
-        enable: true
-      },
-      scrollbar: {
-        type: 'default'
-      },
-      notification: {
-        enable: false,
-        delay: 4500,
-        list: '',
-        page_white_list: '',
-        page_black_list: ''
-      },
-      search: {
-        enable: false,
-        path: ''
-      }
-    }
-  </script>
+<!-- ============================ #sb-site Main Page Wrapper =========================== -->
 
-  
+<div id="sb-site">
+    <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
 
-  
+    <!-- ============================ Header & Logo bar =========================== -->
 
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
-</head>
-
-<body class="lock-screen">
-  <div class="loading" id="loading"></div>
-  
-    
-
-
-  <nav class="navbar">
-    <div class="left">
-      
-        <i class="iconfont iconhome j-navbar-back-home"></i>
-      
-      
-        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
-      
-      
-        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
-      
-      
+    <div id="navigation" class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <!-- Info-bar -->
+                <nav>
+                    <ul class="nav">
+                        <li>
+                            <a href="/" class="animsition-link">
+                                ShanTianQi's Blog
+                            </a>
+                        </li>
+                        <!-- 
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                             -->
+                    </ul>
+                </nav>
+                <!--// Info-bar -->
+            </div>
+            <!-- // .container -->
+            <div class="learnmore sb-toggle-right">More</div>
+            <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+        </div>
+        <!-- // .navbar-inner -->
     </div>
-    <div class="center">MySQL基础</div>
-    <div class="right">
-      <i class="iconfont iconmenu j-navbar-menu"></i>
-    </div>
-    
-      <div id="qrcode-navbar"></div>
-    
-  </nav>
 
-  
-  
+    <!-- ============================ Header & Logo bar =========================== -->
+      <!-- ============================ Hero Image =========================== -->
 
-<nav class="menu">
-  <div class="menu-container">
-    <div class="menu-close">
-      <i class="iconfont iconbaseline-close-px"></i>
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.png) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                            <p>
+                                
+                            </p>
+                            
+                            <p>
+                                每一个不曾起舞的日子都是对生命的辜负。
+                            </p>
+                            
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
     </div>
-    <ul class="menu-content"><li class="menu-item">
-        <a href="/ " class="underline "> 首页</a>
-      </li><li class="menu-item">
-        <a href="/galleries/ " class="underline "> 摄影</a>
-      </li><li class="menu-item">
-        <a href="/archives/ " class="underline "> 归档</a>
-      </li><li class="menu-item">
-        <a href="/tags/ " class="underline "> 标签</a>
-      </li><li class="menu-item">
-        <a href="/categories/ " class="underline "> 分类</a>
-      </li><li class="menu-item">
-        <a href="/about/ " class="underline "> 关于</a>
-      </li></ul>
-    
-      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-    
-  </div>
-</nav>
-  <main id="main">
-  <div class="article-wrap">
-    <div class="row container">
-      <div class="col-xl-3"></div>
-      <div class="col-xl-6"><article class="article">
-  <div class="wrap">
-    <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-  <div class="head-mask">
-    <h1 class="head-title">MySQL基础</h1>
-    <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>一月 13, 2022</span>
-      
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>41285</span>
-    </div>
-  </div>
 </section>
-    <section class="main">
-      <section class="content">
-        
-        <h1 id="第一章-初识MySQL"><a href="#第一章-初识MySQL" class="headerlink" title="第一章    初识MySQL"></a>第一章    初识MySQL</h1><hr>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+
+
+    <section id="intro">
+        <div class="container" style="background-color: #fff;">
+            <div class="row col-md-offset-2">
+                <div class="col-md-8">
+                    <span class="post-meta">
+      <time datetime="2022-01-13T05:47:13.000Z" itemprop="datePublished">
+          2022-01-13
+      </time>
+    
+    
+    | 
+    <a href='/tags/MySQL/'>MySQL</a>
+    
+    
+</span>
+                        <h1>
+                            MySQL基础
+                        </h1>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <h1 id="第一章-初识MySQL"><a href="#第一章-初识MySQL" class="headerlink" title="第一章    初识MySQL"></a>第一章    初识MySQL</h1><hr>
 <h2 id="1-1相关概念"><a href="#1-1相关概念" class="headerlink" title="1.1相关概念"></a>1.1相关概念</h2><p>保存数据的容器：<code>数组</code>、<code>集合</code>、<code>文件</code></p>
 <p><strong>使用数据库的好处：</strong></p>
 <ul>
@@ -223,7 +250,7 @@
 <p>常见的DBMS：MySQL、Oracle、DB2、SqlServer等</p>
 <p><strong>3.SQL</strong></p>
 <p>结构化查询语言(Structure Query Language)：专门用来与数据库通信的语言。</p>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210821171708.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210821171708"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210821171708.png" alt="QQ截图20210821171708"></p>
 <p>优点：</p>
 <ul>
 <li>不是某个特定数据库供应商专有的语言，几乎所有DBMS都支持SQL</li>
@@ -232,7 +259,7 @@
 </ul>
 <hr>
 <h2 id="1-2数据库存储数据的特点"><a href="#1-2数据库存储数据的特点" class="headerlink" title="1.2数据库存储数据的特点"></a>1.2数据库存储数据的特点</h2><p>1.将数据放到表中，表再放到库中</p>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210821182429.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210821182429"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210821182429.png" alt="QQ截图20210821182429"></p>
 <p>2.一个数据库中可以有多个表，每个表都有一个名字，用来标识自己。表名具有唯一性。</p>
 <p>3.表具有一些特性，这些特性定义了数据再表中如何存储，类似java中”类”的设计。</p>
 <p>4.表由列组成，我们也称为字段。所有表都是由一个或多个列组成的，每一列类似java中的”属性”。</p>
@@ -675,7 +702,7 @@
 <p>将日期转换成字符</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">DATE_FORMAT(&#x27;2018/6/6&#x27;,&#x27;%Y年%m月%d日&#x27;);</span><br><span class="line">#2018年6月6日</span><br></pre></td></tr></table></figure>
 
-<img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210826113850.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210826113850" style="zoom:80%;" />
+<img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210826113850.png" alt="QQ截图20210826113850" style="zoom:80%;" />
 
 <p>案例一：查询有奖金的员工名和入职日期(xx月/xx日 xx年)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">  last_name,</span><br><span class="line">  DATE_FORMAT(hiredate, &#x27;%m月/%d日 %y年&#x27;) 入职日期 </span><br><span class="line">FROM</span><br><span class="line">  employees </span><br><span class="line">WHERE commission_pct IS NOT NULL ;</span><br></pre></td></tr></table></figure>
@@ -868,7 +895,7 @@
 <li>外连接：左外连接、右外连接、全外连接</li>
 <li>交叉连接</li>
 </ul>
-<img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210830112023.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210830112023" style="zoom:80%;" />
+<img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210830112023.png" alt="QQ截图20210830112023" style="zoom:80%;" />
 
 <p><strong>一.sql192标准</strong></p>
 <p><strong>1.等值连接</strong></p>
@@ -1022,9 +1049,9 @@
 <p>sql192和sql199<strong>PK</strong></p>
 <p>功能：sql支持的较多</p>
 <p>可读性：sql199实现连接条件和筛选条件分离，可读性较高</p>
-<img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210904174554.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210904174554" style="zoom:67%;" />
+<img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210904174554.png" alt="QQ截图20210904174554" style="zoom:67%;" />
 
-<img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210904174652.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210904174652" style="zoom:67%;" />
+<img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210904174652.png" alt="QQ截图20210904174652" style="zoom:67%;" />
 
 <p>案例一：查询编号&gt;3的女神的男朋友信息，如果有则列出信息，如果没有，则用null填充</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT b.id,b.name,bo.*</span><br><span class="line">FROM beauty b</span><br><span class="line">LEFT OUTER JOIN boys bo</span><br><span class="line">ON b.`boyfriend_id`=bo.`id`</span><br><span class="line">WHERE b.`id`&gt;3;</span><br></pre></td></tr></table></figure>
@@ -1035,8 +1062,8 @@
 <p>案例三：查询部门名为SAL或IT的员工信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT e.*,d.department_name,d.department_id</span><br><span class="line">FROM departments d</span><br><span class="line">LEFT OUTER JOIN employees e</span><br><span class="line">ON d.`department_id`=e.`department_id`</span><br><span class="line">WHERE d.`department_name` IN (&#x27;SAL&#x27;,&#x27;IT&#x27;);</span><br></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210904181727.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210904181727"></p>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210904181736.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210904181736"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210904181727.png" alt="QQ截图20210904181727"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210904181736.png" alt="QQ截图20210904181736"></p>
 <blockquote>
 <p>tips：一个名字但是id不一样</p>
 </blockquote>
@@ -1110,7 +1137,7 @@
 <li>返回多行</li>
 <li>使用多行比较操作符</li>
 </ul>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210906184307.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210906184307"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210906184307.png" alt="QQ截图20210906184307"></p>
 <p>案例一：返回<code>location_id</code>是1400或1700的部门中的所有员工姓名</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT last_name</span><br><span class="line">FROM employees</span><br><span class="line">WHERE department_id IN(</span><br><span class="line">	SELECT DISTINCT department_id</span><br><span class="line">	FROM departments</span><br><span class="line">	WHERE location_id IN(1400,1700)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
@@ -1429,7 +1456,7 @@
 <ul>
 <li>整型</li>
 </ul>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210915215236.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210915215236"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210915215236.png" alt="QQ截图20210915215236"></p>
 <p>分类：tinyint、smallint、mediumint、int/integer、bigint</p>
 <p>​             1            2                 3                  4                8   </p>
 <p>特点：</p>
@@ -1445,7 +1472,7 @@
 <ul>
 <li>小数</li>
 </ul>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210916211328.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210916211328"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210916211328.png" alt="QQ截图20210916211328"></p>
 <p>特点：</p>
 <ul>
 <li>M：整数部分+小数部分     D：小数部分。如果超出范围，则插入临界值</li>
@@ -1475,13 +1502,13 @@
 <li>** <code>char(M)</code>**</li>
 <li>** <code>varchar(M)</code>**</li>
 </ul>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210917092411.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210917092411"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210917092411.png" alt="QQ截图20210917092411"></p>
 <p>特点：</p>
 <p>​                        特点                            空间的耗费             效率                     M的意思</p>
 <p>char           固定长度的字符               比较耗费                  高             最大的字符数，可以省略，默认为1</p>
 <p>varchar      可变长度的字符               比较节省                  低             最大的字符数，不可以省略</p>
 <p><strong>位类型</strong></p>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210917094843.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210917094843"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210917094843.png" alt="QQ截图20210917094843"></p>
 <p><strong>binary和varbinary类型</strong></p>
 <p>用于保存较短的二进制</p>
 <p>说明：类似于char和varchar，不同的是他们包含二进制字符串而不包含非二进制字符串。</p>
@@ -1491,14 +1518,14 @@
 <p><strong>Set类型</strong></p>
 <p>用于保存集合</p>
 <p>说明：和Enum类型类似，里面可以保存0~64个成员。和Enum类型最大的区别是：Set类型一次可以选取多个成员，而Enum只能选一个，根据成员个数不同，存储所占的字节也不同。</p>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210919111952.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210919111952"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210919111952.png" alt="QQ截图20210919111952"></p>
 <p>2.较长的文本：</p>
 <ul>
 <li>text</li>
 <li>blob(较长的二进制数据)</li>
 </ul>
 <p><strong>日期型：</strong></p>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210919112335.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210919112335"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210919112335.png" alt="QQ截图20210919112335"></p>
 <p>分类：</p>
 <ul>
 <li>date只保存日期</li>
@@ -1639,7 +1666,7 @@
 <p><strong>1.MySQL中起始值永远是1，设置其他值也没有效果，但是步程可以设置</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE &#x27;%AUTO_INCREMENT%&#x27;;</span><br><span class="line">SET auto_increment_increment=3;</span><br></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210926165712.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210926165712"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210926165712.png" alt="QQ截图20210926165712"></p>
 <p><strong>2.设置起始值</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS tab_indentity;</span><br><span class="line">CREATE TABLE tab_indentity(</span><br><span class="line">	id INT PRIMARY KEY AUTO_INCREMENT,#标识列</span><br><span class="line">	NAME VARCHAR(20)</span><br><span class="line">);</span><br><span class="line">INSERT INTO tab_indentity VALUE(10,&#x27;join&#x27;);</span><br><span class="line">INSERT INTO tab_indentity VALUE(NULL,&#x27;join&#x27;);</span><br><span class="line">SELECT *</span><br><span class="line">FROM tab_indentity;#起始值就为10了</span><br></pre></td></tr></table></figure>
 
@@ -1750,8 +1777,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#开启事务</span><br><span class="line">SET autocommit=0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">#编写一组事务语句</span><br><span class="line">UPDATE account SET balance = 1000 WHERE username=&#x27;张无忌&#x27;;</span><br><span class="line">UPDATE account SET balance = 1000  WHERE username=&#x27;赵敏&#x27;;</span><br><span class="line">#结束事务</span><br><span class="line">ROLLBACK;#回滚</span><br><span class="line"></span><br><span class="line">#执行成功后，结果查看为 张无忌1500 赵敏500 不变</span><br></pre></td></tr></table></figure>
 
 <p><strong>事务的并发问题</strong></p>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210928194246.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210928194246"></p>
-<p><img   class="lazyload" data-original="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210928194400.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="QQ截图20210928194400"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210928194246.png" alt="QQ截图20210928194246"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210928194400.png" alt="QQ截图20210928194400"></p>
 <p><strong>演示事务的隔离级别</strong></p>
 <p>​                                                        脏读                    不可重复读                  幻读</p>
 <ul>
@@ -1865,177 +1892,172 @@
 <p>delete支持回滚，truncate不支持回滚</p>
 </blockquote>
 
-      </section>
-      <section class="extra">
-        
-          <ul class="copyright">
-  
-    <li><strong>本文作者：</strong>ShanTianQi</li>
-    <li><strong>本文链接：</strong><a href="https://www.stq555.com/2022/01/13/MySQL%E5%9F%BA%E7%A1%80/index.html" title="https:&#x2F;&#x2F;www.stq555.com&#x2F;2022&#x2F;01&#x2F;13&#x2F;MySQL%E5%9F%BA%E7%A1%80&#x2F;index.html">https:&#x2F;&#x2F;www.stq555.com&#x2F;2022&#x2F;01&#x2F;13&#x2F;MySQL%E5%9F%BA%E7%A1%80&#x2F;index.html</a></li>
-    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
-  
-</ul>
-        
-        
-          <section class="donate">
-  <div id="qrcode-donate">
-    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
-  </div>
-  <div class="icon">
-    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
-    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
-  </div>
-</section>
-        
-        
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul> 
+                    <div class="clearfix"></div>
+                    <hr class="nogutter">
+                    <p class="note note-warning">
 
-        
-  <nav class="nav">
-    <a href="/2022/01/14/JDBC/"><i class="iconfont iconleft"></i>JDBC</a>
-    <a href="/2022/01/13/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">Lambda表达式<i class="iconfont iconright"></i></a>
-  </nav>
+    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
 
-      </section>
-      
-    </section>
-  </div>
-</article></div>
-      <div class="col-xl-3">
-        
-          
-  <aside class="toc-wrap">
-    <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%88%9D%E8%AF%86MySQL"><span class="toc-text">第一章    初识MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">1.2数据库存储数据的特点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%88%9D%E5%A7%8BMySQL"><span class="toc-text">第二章    初始MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1MySQL%E4%BA%A7%E5%93%81%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-text">2.1MySQL产品的介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2MySQL%E4%BA%A7%E5%93%81%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-text">2.2MySQL产品的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3MySQL%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%90%AF%E5%8A%A8%E5%92%8C%E5%81%9C%E6%AD%A2"><span class="toc-text">2.3MySQL服务的启动和停止</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4MySQL%E6%9C%8D%E5%8A%A1%E7%9A%84%E7%99%BB%E5%BD%95%E4%B8%8E%E9%80%80%E5%87%BA"><span class="toc-text">2.4MySQL服务的登录与退出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5MySQL%E7%9A%84%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4%E5%92%8C%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="toc-text">2.5MySQL的常见命令和语法规范</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-DQL%E8%AF%AD%E8%A8%80"><span class="toc-text">第三章    DQL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.1基础查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.2条件查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.3排序查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0"><span class="toc-text">3.4常见函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5%E5%88%86%E7%BB%84%E5%87%BD%E6%95%B0"><span class="toc-text">3.5分组函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.6分组查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.7连接查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-8%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.8子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-9%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.9分页查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-10union%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-text">3.10union联合查询</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-DML%E8%AF%AD%E8%A8%80"><span class="toc-text">第四章    DML语言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1%E6%8F%92%E5%85%A5%E8%AF%AD%E8%A8%80"><span class="toc-text">4.1插入语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2%E4%BF%AE%E6%94%B9%E8%AF%AD%E5%8F%A5"><span class="toc-text">4.2修改语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3%E5%88%A0%E9%99%A4%E8%AF%AD%E5%8F%A5"><span class="toc-text">4.3删除语句</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-DDL%E8%AF%AD%E8%A8%80"><span class="toc-text">第五章    DDL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1%E5%BA%93%E5%92%8C%E8%A1%A8%E7%9A%84%E7%AE%A1%E7%90%86"><span class="toc-text">5.1库和表的管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BB%8B%E7%BB%8D"><span class="toc-text">5.2常见数据类型介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3%E5%B8%B8%E8%A7%81%E7%BA%A6%E6%9D%9F"><span class="toc-text">5.3常见约束</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-DCL%E8%AF%AD%E8%A8%80"><span class="toc-text">第六章    DCL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7"><span class="toc-text">6.1管理用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-text">6.2权限管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-TCL%E8%AF%AD%E8%A8%80"><span class="toc-text">第七章    TCL语言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1%E4%BA%8B%E5%8A%A1%E5%92%8C%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86"><span class="toc-text">7.1事务和事务处理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E8%A7%86%E5%9B%BE%E7%9A%84%E8%AE%B2%E8%A7%A3"><span class="toc-text">第八章    视图的讲解</span></a></li></ol>
-  </aside>
-
-        
-      </div>
-    </div>
-  </div>
-</main>
-  
-
-<footer class="footer">
-  <div class="footer-social"><a 
-        href="tencent://message/?Menu=yes&uin=894519210 "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color= '#12B7F5'" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  iconQQ "></i>
-      </a><a 
-        href="javascript:; "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color= '#09BB07'" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  iconwechat-fill "></i>
-      </a><a 
-        href="https://www.instagram.com/izhaoo/ "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color= '#DA2E76'" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  iconinstagram "></i>
-      </a><a 
-        href="https://github.com/zhaoo "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color= '#9f7be1'" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  icongithub-fill "></i>
-      </a><a 
-        href="mailto:izhaoo@163.com "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color=#FF3B00" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  iconmail"></i>
-      </a></div>
-  
-    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-  
-</footer>
-  
-      <div class="fab fab-plus">
-    <i class="iconfont iconplus"></i>
-  </div>
-  
-  
-  
-  <div class="fab fab-up">
-    <i class="iconfont iconcaret-up"></i>
-  </div>
-  
-  
-  
+</p>
+            </div>
+            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-<script src="/js/color-mode.js"></script>
+    <a class="pull-left" href="/2022/01/14/JDBC/" style="float: left;">
+        ← JDBC
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/01/13/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        Lambda表达式 →
+    </a>
+    
+</nav>
 
-  
-  
-</body>
+                <div class="col-md-8 col-md-offset-2 col-sm-24">
+                    <script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
 
-
-
-
-
-  
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
-
-
-
-
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-
-
-
-
-
-
-  
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-
-
-
-
-<script src="/js/utils.js"></script>
-<script src="/js/script.js"></script>
-
-
-
-
-
-
-
-  <script>
+  window.onload = function () {
     (function () {
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-      } else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-      }
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
     })();
-  </script>
+  }
+  */
+
+</script>
+
+                        <div id="vcomments"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: true,
+        verify: true,
+        appId: 'uqRS6rgdVAO0sqVAVmDbuepE-gzGzoHsz',
+        appKey: 'IATuRpiDzSLsw829xXTjmVMc',
+        placeholder: '欢迎大家来留言吧~',
+        path: window.location.pathname,
+        avatar: 'monsterid'
+    })
+</script>
+                </div>
+
+        </div>
+    </section>
+
+      <!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+        <div class="copy">
+            <p>
+                &copy; 2022
+                <script>
+                    new Date().getFullYear() > 2022 && document.write("-" + new Date().getFullYear());
+                </script>, Content By
+                ShanTianQi. All Rights Reserved.
+            </p>
+            <div class="statistics">
+
+    <!-- 不蒜子统计PV -->
+    <span id="busuanzi_container_site_pv" style="display: inline;">
+        本站总访问量
+        <span id="busuanzi_value_site_pv"></span>次
+    </span>
+
+
+    <!-- 不蒜子统计UV -->
+    <span id="busuanzi_container_site_uv" style="display: inline;">
+        本站访客数
+        <span id="busuanzi_value_site_uv"></span>人次
+    </span>
+
+
+</div>
+                <p style="margin-bottom: 30px;"><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/" style="color: #767D84">辽ICP备2021012349号-1</a></p>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
 
 
-
-
-
-
-
-
-
-
-
-
+      
+</body>
 </html>
