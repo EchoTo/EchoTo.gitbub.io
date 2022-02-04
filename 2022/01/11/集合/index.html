@@ -1,265 +1,242 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
 
 
+    <head>
+        <title>
+            
+                集合 |
+                    
+                        ShanTianQi&#39;s Blog
+        </title>
+        <!-- Meta data -->
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="ShanTianQi's Blog">
+        <meta name="author" content="ShanTianQi">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="ShanTianQi">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="第一章 Collection集合(单列集合)1.1集合概述  集合：集合是Java中提供的一种容器，可以用来存储多个数据。  集合和数组的区别： 1.数组的长度是固定的。    集合的长度是可变的。 2.数组中存储的是同一种元素，可以存储基本类型数据值。    集合存储的都是对象，而且对象的类型可以不一致，在开发中一般当对象多的时候，使用集合进行存储。  1.2集合框架 集合按照其存储结构可以分">
-<meta property="og:type" content="article">
-<meta property="og:title" content="集合">
-<meta property="og:url" content="https://www.stq555.com/2022/01/11/%E9%9B%86%E5%90%88/index.html">
-<meta property="og:site_name" content="ShanTianQi&#39;s Blog">
-<meta property="og:description" content="第一章 Collection集合(单列集合)1.1集合概述  集合：集合是Java中提供的一种容器，可以用来存储多个数据。  集合和数组的区别： 1.数组的长度是固定的。    集合的长度是可变的。 2.数组中存储的是同一种元素，可以存储基本类型数据值。    集合存储的都是对象，而且对象的类型可以不一致，在开发中一般当对象多的时候，使用集合进行存储。  1.2集合框架 集合按照其存储结构可以分">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/kJzBVUpWIOrX4Z8.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/OlFna5j4kIuobPi.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/KV8BOgCljD21w4s.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/g9I8OseTiumWFMw.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/XHl4w3sdRTbhWZS.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/4JMvSHsQyGRjLda.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/lvrotH3FVb1mnJh.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/yJTkuwC6jQAaNZh.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/Tx6FJyLSqnz491R.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/5XDy8YlAwfV1uFM.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/HBbTIjs9fdkcQxO.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/3EnktBm8luvs6FH.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/GNvTJpixAj5zgQc.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/eydx2ESmpZPN17Q.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/1fO6nDC5WqhwLNs.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/PQJCovsDIBiUqy4.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/gkRGWCfBNmIUXvZ.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/DP92zZ1wRh5vnAg.png">
-<meta property="og:image" content="https://s2.loli.net/2022/01/11/ERZUXqpTtaWLbJe.png">
-<meta property="article:published_time" content="2022-01-11T04:17:54.000Z">
-<meta property="article:modified_time" content="2022-01-11T14:29:10.639Z">
-<meta property="article:author" content="ShanTianQi">
-<meta property="article:tag" content="java">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/01/11/kJzBVUpWIOrX4Z8.png">
-  
-  
-  <title>集合 - ShanTianQi&#39;s Blog</title>
+        <!-- Favicon, (keep icon in root folder) -->
+        <link rel="Shortcut Icon" href="/img/bitbug_favicon.ico" type="image/ico">
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.stq555.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
-</head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+        <link rel="alternate" href="/atom.xml" title="ShanTianQi&#39;s Blog" type="application/atom+xml">
+        <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
+            <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+            
+
+                <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+                <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+                <script src="/js/jquery-1.11.1.min.js"></script>
+                <script>
+                    window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')
+                </script>
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+                <!-- Load these in the <head> for quicker IE8+ load times -->
+                <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+                <style>
+                    .col-md-8.col-md-offset-2.opening-statement img {
+                        display: none;
+                    }
+                </style>
+    </head>
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+<div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+    <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+        <img src="/img/close.png" alt="Close" />
     </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="集合">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-11 12:17" pubdate>
-        2022年1月11日 中午
-      </time>
-    </span>
-  
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu">
+        <li><a href="/" class="animsition-link" title="Home">首页</a></li>
+        <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
+        <!-- Dropdown Menu -->
+        
+                
+                    <li>
+                        <a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
+                        <ul class="sb-submenu">
+                            
+                                <li>
+                                    <a href="/categories/First/" class="animsition-link">
+                                        First<small>(2)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/MySQL/" class="animsition-link">
+                                        MySQL<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/daily/" class="animsition-link">
+                                        daily<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/java/" class="animsition-link">
+                                        java<small>(7)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/动态规划/" class="animsition-link">
+                                        动态规划<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/排序/" class="animsition-link">
+                                        排序<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/板子、算法/" class="animsition-link">
+                                        板子、算法<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/" class="animsition-link">
+                                        算法<small>(2)</small></a>
+                                </li>
+                                
+                        </ul>
+                    </li>
+                    
+                        <li><a href="/archives/link.html" class="animsition-link" title="about">友链</a></li>
+                        <li><a href="/archives/about.html" class="animsition-link" title="about">关于</a></li>
+    </ul>
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu secondary">
+        
+    </ul>
 </div>
 
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      undefined 字
-    </span>
-  
+<!-- ============================ END Off-canvas navigation =========================== -->
 
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      NaN 分钟
-    </span>
-  
+<!-- ============================ #sb-site Main Page Wrapper =========================== -->
 
-  
-  
-</div>
+<div id="sb-site">
+    <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
 
-            
-          </div>
+    <!-- ============================ Header & Logo bar =========================== -->
 
-          
+    <div id="navigation" class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <!-- Info-bar -->
+                <nav>
+                    <ul class="nav">
+                        <li>
+                            <a href="/" class="animsition-link">
+                                ShanTianQi's Blog
+                            </a>
+                        </li>
+                        <!-- 
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                             -->
+                    </ul>
+                </nav>
+                <!--// Info-bar -->
+            </div>
+            <!-- // .container -->
+            <div class="learnmore sb-toggle-right">More</div>
+            <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
         </div>
-      </div>
+        <!-- // .navbar-inner -->
     </div>
-  </header>
 
-  <main>
+    <!-- ============================ Header & Logo bar =========================== -->
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.png) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                            <p>
+                                
+                            </p>
+                            
+                            <p>
+                                每一个不曾起舞的日子都是对生命的辜负。
+                            </p>
+                            
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
+    </div>
+</section>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+
+
+    <section id="intro">
+        <div class="container" style="background-color: #fff;">
+            <div class="row col-md-offset-2">
+                <div class="col-md-8">
+                    <span class="post-meta">
+      <time datetime="2022-01-11T04:17:54.000Z" itemprop="datePublished">
+          2022-01-11
+      </time>
     
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">集合</h1>
-            
-            <div class="markdown-body">
-              <hr>
+    
+    | 
+    <a href='/tags/java/'>java</a>
+    
+    
+</span>
+                        <h1>
+                            集合
+                        </h1>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <hr>
 <h1 id="第一章-Collection集合-单列集合"><a href="#第一章-Collection集合-单列集合" class="headerlink" title="第一章 Collection集合(单列集合)"></a>第一章 Collection集合(单列集合)</h1><h2 id="1-1集合概述"><a href="#1-1集合概述" class="headerlink" title="1.1集合概述"></a>1.1集合概述</h2><hr>
 <ul>
 <li>集合：集合是Java中提供的一种容器，可以用来存储多个数据。</li>
@@ -275,12 +252,12 @@
 <ul>
 <li><strong>Collection</strong>:单列集合类的根接口，用于存储一系列符合某种规则的元素，它有两个重要的子接口，分别是<strong>java.util.List</strong>和<strong>java.util.Set</strong>，其中List的特点是元素有序、元素可重复。Set的特点是元素无序，而且不可重复。List接口的主要实现类有<strong>java.util.ArrayList</strong>和<strong>java.util.LinkedList</strong>，Set接口的主要实现类有<strong>java.util.HashSet</strong>和<strong>java.util.TreeSet</strong></li>
 </ul>
-<p><img src="https://s2.loli.net/2022/01/11/kJzBVUpWIOrX4Z8.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/kJzBVUpWIOrX4Z8.png"></p>
 <ul>
 <li>橙色框里填写的都是接口类型，而蓝色框里填写的都是具体的实现类</li>
 <li>集合本身是一个工具，它存放在java.util包中。在<strong>Collection</strong>接口定义着单列集合框架中最最共性的内容</li>
 </ul>
-<p><img src="https://s2.loli.net/2022/01/11/OlFna5j4kIuobPi.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/OlFna5j4kIuobPi.png"></p>
 <h2 id="1-3Collection常用功能"><a href="#1-3Collection常用功能" class="headerlink" title="1.3Collection常用功能"></a><strong>1.3Collection常用功能</strong></h2><hr>
 <p><strong>Collection</strong>是所有单列集合的父接口，因此在<strong>Collection</strong>中定义了单列集合(List和Set)通用的一些方法，这些方法可用于操作所有的单列集合。</p>
 <ul>
@@ -469,7 +446,7 @@
 <li><p>看牌：直接打印每一个集合。</p>
 </li>
 </ul>
-<p><img src="https://s2.loli.net/2022/01/11/KV8BOgCljD21w4s.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/KV8BOgCljD21w4s.png"></p>
 <p>代码实现：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Demo02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo09Game</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;String&gt; poker=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        String[] colors=&#123;<span class="string">&quot;♠&quot;</span>,<span class="string">&quot;♥&quot;</span>,<span class="string">&quot;♣&quot;</span>,<span class="string">&quot;♦&quot;</span> &#125;;</span><br><span class="line">        String[] numbers=&#123;<span class="string">&quot;2&quot;</span>,<span class="string">&quot;A&quot;</span>,<span class="string">&quot;K&quot;</span>,<span class="string">&quot;Q&quot;</span>,<span class="string">&quot;J&quot;</span>,<span class="string">&quot;10&quot;</span>,<span class="string">&quot;9&quot;</span>,<span class="string">&quot;8&quot;</span>,<span class="string">&quot;7&quot;</span>,<span class="string">&quot;6&quot;</span>,<span class="string">&quot;5&quot;</span>,<span class="string">&quot;4&quot;</span>,<span class="string">&quot;3&quot;</span>&#125;;</span><br><span class="line">        poker.add(<span class="string">&quot;大王&quot;</span>);</span><br><span class="line">        poker.add(<span class="string">&quot;小王&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (String color:colors) &#123;</span><br><span class="line">            <span class="keyword">for</span> (String number:numbers) &#123;</span><br><span class="line">                poker.add(color+number);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.shuffle(poker);</span><br><span class="line">        ArrayList&lt;String&gt; player01=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; player02=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; player03=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; dipai=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;poker.size() ; i++) &#123;</span><br><span class="line">            String s = poker.get(i);</span><br><span class="line">            <span class="keyword">if</span>(i&gt;=<span class="number">51</span>)&#123;</span><br><span class="line">                dipai.add(s);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                player01.add(s);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i%<span class="number">3</span>==<span class="number">1</span>)&#123;</span><br><span class="line">                player02.add(s);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i%<span class="number">3</span>==<span class="number">2</span>)&#123;</span><br><span class="line">                player03.add(s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;玩家一&quot;</span>+player01);</span><br><span class="line">        System.out.println(<span class="string">&quot;玩家二&quot;</span>+player02);</span><br><span class="line">        System.out.println(<span class="string">&quot;玩家三&quot;</span>+player03);</span><br><span class="line">        System.out.println(<span class="string">&quot;底牌&quot;</span>+dipai);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -484,7 +461,7 @@
 <li>==先进后出==(即，存进去的元素，要在它后面的元素依次取出后，才能取出该元素)。</li>
 <li>栈的入口、出口的都是栈的顶端位置。</li>
 </ul>
-<p><img src="https://s2.loli.net/2022/01/11/g9I8OseTiumWFMw.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/g9I8OseTiumWFMw.png"></p>
 <h3 id="2-队列"><a href="#2-队列" class="headerlink" title="2.队列"></a>2.队列</h3><ul>
 <li><strong>队列：queue</strong>，简称队，它同堆栈一样，也是一种运算受限的线性表，其限制是仅允许在表的一端进行插入，而在表的另一端进行删除。</li>
 </ul>
@@ -493,36 +470,36 @@
 <li>先进先出：(即，存进去的元素，要在它前面的元素依次取出后，才能取出该元素)。例如：火车进山洞</li>
 <li>队列的入口、出口各站一侧。如下图：左侧为入口，右侧为出口。</li>
 </ul>
-<p><img src="https://s2.loli.net/2022/01/11/XHl4w3sdRTbhWZS.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://s2.loli.net/2022/01/11/4JMvSHsQyGRjLda.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/XHl4w3sdRTbhWZS.png"></p>
+<p><img src="https://s2.loli.net/2022/01/11/4JMvSHsQyGRjLda.png"></p>
 <h3 id="3-数组"><a href="#3-数组" class="headerlink" title="3.数组"></a>3.数组</h3><ul>
 <li><p><strong>数组：Array</strong>：是有序的元素序列，数组是在内存中开辟一段连续的空间，并在空间存放元素。就像酒店，有100个房间，从001到100每个房间都有固定编号，通过编号就可以迅速找到住在房间里的人。</p>
 <p>特点：1.查询快：数组的地址是连续的，我们通过数组的首地址可以找到数组，通过数组的索引可以快速查找某一元素</p>
 <p>​           2.增删慢：数组的长度是固定的，我们想要增加/删除一个元素，必须创建一个新数组，把源数组的数据复制过来</p>
 </li>
 <li><p>查找元素快：通过索引，可以快速访问指定位置的元素</p>
-<p><img src="https://s2.loli.net/2022/01/11/lvrotH3FVb1mnJh.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/lvrotH3FVb1mnJh.png"></p>
 </li>
 <li><p>增删元素慢</p>
 <p><strong>指定索引位置增加元素</strong>：需要创建一个新数组，将指定新元素存储在指定索引位置，再把元素组元素根据索引，复制到新数组对应索引的位置。</p>
 </li>
 </ul>
-<p><img src="https://s2.loli.net/2022/01/11/yJTkuwC6jQAaNZh.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/yJTkuwC6jQAaNZh.png"></p>
 <h3 id="4-链表"><a href="#4-链表" class="headerlink" title="4.链表"></a>4.链表</h3><ul>
 <li><strong>链表：linked list</strong>，由一系列结点node(链表中每一个元素称为结点)组成，结点可以在运行时i动态生成。每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。我们常说的链表结构有单向链表与双向链表，这里记录的是<strong>单向链表</strong>。</li>
 </ul>
-<p><img src="https://s2.loli.net/2022/01/11/Tx6FJyLSqnz491R.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/Tx6FJyLSqnz491R.png"></p>
 <p>简单的说，采用该结构的集合，对元素的存取有如下特点：</p>
 <ul>
 <li><p>多个结点之间，通过地址进行连接。例如，多个人手拉手，每个人使用自己的右手拉住下一个人的左手，以此类推，这样多个人就在一起了。</p>
-<p><img src="https://s2.loli.net/2022/01/11/5XDy8YlAwfV1uFM.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/5XDy8YlAwfV1uFM.png"></p>
 </li>
 <li><p>查找元素慢：想查找某个元素，需要通过连接的结点，依次向后查找指定元素，链表中地址不是连续的，每次查询元素，都必须从头开始查询</p>
 </li>
 <li><p>增删元素快：链表结构，增加/删除一个元素，对链表的整体结构没有影响，所以增删快</p>
 </li>
 </ul>
-<p><img src="https://s2.loli.net/2022/01/11/HBbTIjs9fdkcQxO.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/HBbTIjs9fdkcQxO.png"></p>
 <h3 id="5-红黑树"><a href="#5-红黑树" class="headerlink" title="5.红黑树"></a>5.红黑树</h3><ul>
 <li><strong>二叉树：binary tree</strong>，是每个结点不超过二的有序**树(tree)**。</li>
 </ul>
@@ -531,13 +508,13 @@
 <ul>
 <li><p>排序树/查找树</p>
 <p>在二叉树的基础上，元素是有大小顺序的，左子树小，右子树大。</p>
-<p><img src="https://s2.loli.net/2022/01/11/3EnktBm8luvs6FH.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/3EnktBm8luvs6FH.png"></p>
 </li>
 <li><p>平衡树</p>
-<p><img src="https://s2.loli.net/2022/01/11/GNvTJpixAj5zgQc.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/GNvTJpixAj5zgQc.png"></p>
 </li>
 <li><p>不平衡树</p>
-<p><img src="https://s2.loli.net/2022/01/11/eydx2ESmpZPN17Q.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/eydx2ESmpZPN17Q.png"></p>
 </li>
 <li><p><strong>红黑树</strong></p>
 <p>特点：趋近于平衡树，查询的速度非常的快，查询叶子节点最大次数和最小次数不能超过二倍(找到一个元素的次数不能是其他的二倍)</p>
@@ -547,7 +524,7 @@
 <p>性质4：每个红色结点的两个子结点一定都是黑色。</p>
 <p><strong>性质5：任意一结点到每个叶子结点的路径都包含数量相同的黑结点。</strong></p>
 <p>性质5.1：如果一个结点存在黑子结点，那么该结点肯定有两个子结点</p>
-<p><img src="https://s2.loli.net/2022/01/11/1fO6nDC5WqhwLNs.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/1fO6nDC5WqhwLNs.png"></p>
 </li>
 </ul>
 <hr>
@@ -635,7 +612,7 @@
 <blockquote>
 <p>LinkedList是一个双向链表</p>
 </blockquote>
-<p><img src="https://s2.loli.net/2022/01/11/PQJCovsDIBiUqy4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/PQJCovsDIBiUqy4.png"></p>
 <p>实际开发中对一个集合元素的增添和删除经常涉及到首尾操作，而LinkedList提供了大量首尾操作的方法</p>
 <ul>
 <li><code>public void addFirst(E e)====push()压栈</code>：将指定元素插入此列表的开头。</li>
@@ -690,7 +667,7 @@
 <hr>
 <p><strong>哈希冲突</strong></p>
 <p>两个元素不同，但是哈希值相同</p>
-<p><img src="https://s2.loli.net/2022/01/11/gkRGWCfBNmIUXvZ.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/gkRGWCfBNmIUXvZ.png"></p>
 <p>数组超过8位</p>
 <p>少6变回数组</p>
 <p>解决办法：</p>
@@ -702,7 +679,7 @@
 <p>哈希表中，没有重复元素的原因：集合在调用add方法时，add方法会调用元素的hashCode方法和equals方法。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Demo02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo13HashSetSaveString</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Set&lt;String&gt; set=<span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        String s1=<span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">        String s2=<span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">        set.add(s1);</span><br><span class="line">        set.add(s2);</span><br><span class="line">        set.add(<span class="string">&quot;重地&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;通话&quot;</span>);</span><br><span class="line">        set.add(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">        System.out.println(set);<span class="comment">//[重地, 通话, abc]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://s2.loli.net/2022/01/11/DP92zZ1wRh5vnAg.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/DP92zZ1wRh5vnAg.png"></p>
 <hr>
 <h2 id="8-4HashSet存储自定义类型元素"><a href="#8-4HashSet存储自定义类型元素" class="headerlink" title="8.4HashSet存储自定义类型元素"></a>8.4HashSet存储自定义类型元素</h2><p>给HashSet中存放自定义类型元素时，需要重写对象中的hashCode和equals方法，建立自己的比较方式，才能保证HashSet集合中的对象唯一。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Demo02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Objects;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo14HashSetSavePersion</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        HashSet&lt;persions&gt; set=<span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        persions p1=<span class="keyword">new</span> persions(<span class="string">&quot;小明&quot;</span>,<span class="number">21</span>);</span><br><span class="line">        persions p2=<span class="keyword">new</span> persions(<span class="string">&quot;小明&quot;</span>,<span class="number">21</span>);</span><br><span class="line">        persions p3=<span class="keyword">new</span> persions(<span class="string">&quot;小明&quot;</span>,<span class="number">24</span>);</span><br><span class="line">        set.add(p1);</span><br><span class="line">        set.add(p2);</span><br><span class="line">        set.add(p3);</span><br><span class="line">        System.out.println(p1.hashCode());<span class="comment">//hashCode和equals方法重写前：460141958</span></span><br><span class="line">        <span class="comment">//重写后：23458775</span></span><br><span class="line">        System.out.println(p2.hashCode());<span class="comment">//hashCode和equals方法重写前：1163157884</span></span><br><span class="line">        <span class="comment">//重写后：23458775</span></span><br><span class="line">        System.out.println(p1==p2);<span class="comment">//hashCode和equals方法重写前：false</span></span><br><span class="line">        <span class="comment">//重写后：false</span></span><br><span class="line">        System.out.println(p1.equals(p2));<span class="comment">//hashCode和equals方法重写前：false</span></span><br><span class="line">        <span class="comment">//重写后：true</span></span><br><span class="line">        System.out.println(set);<span class="comment">//hashCode和equals方法重写前：[persions&#123;name=&#x27;小明&#x27;, age=24&#125;, persions&#123;name=&#x27;小明&#x27;, age=21&#125;, persions&#123;name=&#x27;小明&#x27;, age=21&#125;]</span></span><br><span class="line">        <span class="comment">//重写后：[persions&#123;name=&#x27;小明&#x27;, age=21&#125;, persions&#123;name=&#x27;小明&#x27;, age=24&#125;]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">persions</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">persions</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == o) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="keyword">null</span> || getClass() != o.getClass()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        persions persions = (persions) o;</span><br><span class="line">        <span class="keyword">return</span> age == persions.age &amp;&amp;</span><br><span class="line">                Objects.equals(name, persions.name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Objects.hash(name, age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;persions&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -778,7 +755,7 @@
 </blockquote>
 <p>在现实生活中，我们常会看到这样一种集合：IP地址与主机名，身份证号与个人，系统用户名与系统用户对象等，这种一一对应的关系，就叫做映射。Java提供了专门的集合类来存放这种对象关系的对象，即<code>java.util.Map</code>接口。</p>
 <p>对比Collection接口与Map接口的不同：</p>
-<p><img src="https://s2.loli.net/2022/01/11/ERZUXqpTtaWLbJe.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/01/11/ERZUXqpTtaWLbJe.png"></p>
 <h2 id="10-2Map常用子类"><a href="#10-2Map常用子类" class="headerlink" title="10.2Map常用子类"></a>10.2Map常用子类</h2><hr>
 <ul>
 <li><p><strong>HashMap</strong>&lt;K,V&gt;：存储数据采用的哈希表结构，元素的存取顺序不能保证一致。由于要保证键的唯一、不重复，需要重写键的hashCode()方法、equals()方法。</p>
@@ -915,209 +892,172 @@
 <p>​         ctrl+f2：退出debug模式，停止程序</p>
 <p>​         Console：切换到控制台</p>
 
+                    <div class="clearfix"></div>
+                    <hr class="nogutter">
+                    <p class="note note-warning">
+
+    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+
+</p>
             </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/java/">java</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/java/">java</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/01/11/%E7%BA%BF%E7%A8%8B/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">线程</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/01/10/%E7%95%99%E8%A8%80%E5%8A%9F%E8%83%BD%E4%B8%8A%E7%BA%BF/">
-                        <span class="hidden-mobile">留言功能上线~</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
+            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/01/11/%E7%BA%BF%E7%A8%8B/" style="float: left;">
+        ← 线程
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/01/10/%E7%95%99%E8%A8%80%E5%8A%9F%E8%83%BD%E4%B8%8A%E7%BA%BF/">
+        留言功能上线~ →
+    </a>
+    
+</nav>
+
+                <div class="col-md-8 col-md-offset-2 col-sm-24">
+                    <script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+
+                        <div id="vcomments"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: true,
+        verify: true,
+        appId: 'uqRS6rgdVAO0sqVAVmDbuepE-gzGzoHsz',
+        appKey: 'IATuRpiDzSLsw829xXTjmVMc',
+        placeholder: '欢迎大家来留言吧~',
+        path: window.location.pathname,
+        avatar: 'monsterid'
+    })
+</script>
                 </div>
-              
-            </div>
 
-            
-          </article>
         </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
+    </section>
+
+      <!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+        <div class="copy">
+            <p>
+                &copy; 2022
+                <script>
+                    new Date().getFullYear() > 2022 && document.write("-" + new Date().getFullYear());
+                </script>, Content By
+                ShanTianQi. All Rights Reserved.
+            </p>
+            <div class="statistics">
+
+    <!-- 不蒜子统计PV -->
+    <span id="busuanzi_container_site_pv" style="display: inline;">
+        本站总访问量
+        <span id="busuanzi_value_site_pv"></span>次
+    </span>
+
+
+    <!-- 不蒜子统计UV -->
+    <span id="busuanzi_container_site_uv" style="display: inline;">
+        本站访客数
+        <span id="busuanzi_value_site_uv"></span>人次
+    </span>
+
+
 </div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+                <p style="margin-bottom: 30px;"><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/" style="color: #767D84">辽ICP备2021012349号-1</a></p>
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+        <div class="clearfix"> </div>
     </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
-  
-
-  
-
-  
 </footer>
 
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
 
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+    resizeHero();
 
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
 
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
 
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
 
 
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
       
-        typing(title);
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
 </body>
 </html>

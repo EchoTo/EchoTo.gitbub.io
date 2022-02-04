@@ -1,247 +1,242 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
 
 
+    <head>
+        <title>
+            
+                File类、递归 |
+                    
+                        ShanTianQi&#39;s Blog
+        </title>
+        <!-- Meta data -->
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="ShanTianQi's Blog">
+        <meta name="author" content="ShanTianQi">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="ShanTianQi">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="第一章    File类 1.1概述java.io.File类时文件和目录路径名的抽象表示，主要用于文件和目录的创建、查找和删除等操作。 java把电脑中的文件和文件夹(目录)封装为了一个FiLe类,我们可以使用FiLe类对文件和文件夹进行操作 我们可以使用File类的方法   创建一个文件&#x2F;文件夹  删除文件&#x2F;文件夹  获取文件&#x2F;文件夹  判断文件&#x2F;文件夹是否存在  对文件夹进行遍历  获取文件">
-<meta property="og:type" content="article">
-<meta property="og:title" content="File类、递归">
-<meta property="og:url" content="https://www.stq555.com/2022/01/12/File%E7%B1%BB%E3%80%81%E9%80%92%E5%BD%92/index.html">
-<meta property="og:site_name" content="ShanTianQi&#39;s Blog">
-<meta property="og:description" content="第一章    File类 1.1概述java.io.File类时文件和目录路径名的抽象表示，主要用于文件和目录的创建、查找和删除等操作。 java把电脑中的文件和文件夹(目录)封装为了一个FiLe类,我们可以使用FiLe类对文件和文件夹进行操作 我们可以使用File类的方法   创建一个文件&#x2F;文件夹  删除文件&#x2F;文件夹  获取文件&#x2F;文件夹  判断文件&#x2F;文件夹是否存在  对文件夹进行遍历  获取文件">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210814201633.png">
-<meta property="article:published_time" content="2022-01-12T09:22:03.000Z">
-<meta property="article:modified_time" content="2022-01-12T09:23:27.989Z">
-<meta property="article:author" content="ShanTianQi">
-<meta property="article:tag" content="java">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210814201633.png">
-  
-  
-  <title>File类、递归 - ShanTianQi&#39;s Blog</title>
+        <!-- Favicon, (keep icon in root folder) -->
+        <link rel="Shortcut Icon" href="/img/bitbug_favicon.ico" type="image/ico">
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.stq555.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
-</head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+        <link rel="alternate" href="/atom.xml" title="ShanTianQi&#39;s Blog" type="application/atom+xml">
+        <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
+            <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+            
+
+                <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+                <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+                <script src="/js/jquery-1.11.1.min.js"></script>
+                <script>
+                    window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')
+                </script>
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+                <!-- Load these in the <head> for quicker IE8+ load times -->
+                <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+                <style>
+                    .col-md-8.col-md-offset-2.opening-statement img {
+                        display: none;
+                    }
+                </style>
+    </head>
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+<div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+    <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+        <img src="/img/close.png" alt="Close" />
     </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="File类、递归">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-12 17:22" pubdate>
-        2022年1月12日 下午
-      </time>
-    </span>
-  
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu">
+        <li><a href="/" class="animsition-link" title="Home">首页</a></li>
+        <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
+        <!-- Dropdown Menu -->
+        
+                
+                    <li>
+                        <a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
+                        <ul class="sb-submenu">
+                            
+                                <li>
+                                    <a href="/categories/First/" class="animsition-link">
+                                        First<small>(2)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/MySQL/" class="animsition-link">
+                                        MySQL<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/daily/" class="animsition-link">
+                                        daily<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/java/" class="animsition-link">
+                                        java<small>(7)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/动态规划/" class="animsition-link">
+                                        动态规划<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/排序/" class="animsition-link">
+                                        排序<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/板子、算法/" class="animsition-link">
+                                        板子、算法<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/" class="animsition-link">
+                                        算法<small>(2)</small></a>
+                                </li>
+                                
+                        </ul>
+                    </li>
+                    
+                        <li><a href="/archives/link.html" class="animsition-link" title="about">友链</a></li>
+                        <li><a href="/archives/about.html" class="animsition-link" title="about">关于</a></li>
+    </ul>
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu secondary">
+        
+    </ul>
 </div>
 
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      undefined 字
-    </span>
-  
+<!-- ============================ END Off-canvas navigation =========================== -->
 
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      NaN 分钟
-    </span>
-  
+<!-- ============================ #sb-site Main Page Wrapper =========================== -->
 
-  
-  
-</div>
+<div id="sb-site">
+    <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
 
-            
-          </div>
+    <!-- ============================ Header & Logo bar =========================== -->
 
-          
+    <div id="navigation" class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <!-- Info-bar -->
+                <nav>
+                    <ul class="nav">
+                        <li>
+                            <a href="/" class="animsition-link">
+                                ShanTianQi's Blog
+                            </a>
+                        </li>
+                        <!-- 
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                             -->
+                    </ul>
+                </nav>
+                <!--// Info-bar -->
+            </div>
+            <!-- // .container -->
+            <div class="learnmore sb-toggle-right">More</div>
+            <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
         </div>
-      </div>
+        <!-- // .navbar-inner -->
     </div>
-  </header>
 
-  <main>
+    <!-- ============================ Header & Logo bar =========================== -->
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.png) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                            <p>
+                                
+                            </p>
+                            
+                            <p>
+                                每一个不曾起舞的日子都是对生命的辜负。
+                            </p>
+                            
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
+    </div>
+</section>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+
+
+    <section id="intro">
+        <div class="container" style="background-color: #fff;">
+            <div class="row col-md-offset-2">
+                <div class="col-md-8">
+                    <span class="post-meta">
+      <time datetime="2022-01-12T09:22:03.000Z" itemprop="datePublished">
+          2022-01-12
+      </time>
     
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">File类、递归</h1>
-            
-            <div class="markdown-body">
-              <h1 id="第一章-File类"><a href="#第一章-File类" class="headerlink" title="第一章    File类"></a>第一章    File类</h1><hr>
+    
+    | 
+    <a href='/tags/java/'>java</a>
+    
+    
+</span>
+                        <h1>
+                            File类、递归
+                        </h1>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <h1 id="第一章-File类"><a href="#第一章-File类" class="headerlink" title="第一章    File类"></a>第一章    File类</h1><hr>
 <h2 id="1-1概述"><a href="#1-1概述" class="headerlink" title="1.1概述"></a>1.1概述</h2><p><code>java.io.File</code>类时文件和目录路径名的抽象表示，主要用于文件和目录的创建、查找和删除等操作。</p>
 <p>java把电脑中的文件和文件夹(目录)封装为了一个FiLe类,我们可以使用FiLe类对文件和文件夹进行操作</p>
 <p>我们可以使用File类的方法</p>
@@ -361,7 +356,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.priv.demo02Recursion;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sun.security.provider.Sun;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02Recursion</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = sum(<span class="number">3</span>);</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n+sum(n-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>如果仅仅是计算1-n之间的和，不推荐使用递归，使用for循环即可。</p>
-<h3 id="代码执行图解"><a href="#代码执行图解" class="headerlink" title="代码执行图解"></a>代码执行图解</h3><p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210814201633.png" srcset="/img/loading.gif" lazyload alt="QQ截图20210814201633"></p>
+<h3 id="代码执行图解"><a href="#代码执行图解" class="headerlink" title="代码执行图解"></a>代码执行图解</h3><p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210814201633.png" alt="QQ截图20210814201633"></p>
 <blockquote>
 <p>tips：递归一定要有条件限定，保证递归能够停止下来，次数不要太多，否则会发生栈内存溢出。</p>
 </blockquote>
@@ -433,209 +428,172 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.priv.demo03Filter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FilenameFilter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03FilenameFilter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        getAllFile(<span class="keyword">new</span> File(<span class="string">&quot;C:\\Users\\97189\\Desktop\\s&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getAllFile</span><span class="params">(File dir)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//优化：使用Lambda表达式(接口中只有一个方法)</span></span><br><span class="line">        File[] files = dir.listFiles((dir1, name) -&gt; <span class="keyword">new</span> File(dir1,name).isDirectory()||name.toLowerCase().endsWith(<span class="string">&quot;.png&quot;</span>));</span><br><span class="line">        <span class="keyword">for</span> (File files1:files) &#123;</span><br><span class="line">            <span class="keyword">if</span> (files1.isDirectory())&#123;</span><br><span class="line">                getAllFile(files1);</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                System.out.println(files1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+                    <div class="clearfix"></div>
+                    <hr class="nogutter">
+                    <p class="note note-warning">
+
+    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+
+</p>
             </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/java/">java</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/java/">java</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/01/12/Junit%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E6%B3%A8%E8%A7%A3%E3%80%81%E6%9E%9A%E4%B8%BE%E7%B1%BB/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Junit、反射、注解、枚举类</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/01/11/IO%E6%B5%81/">
-                        <span class="hidden-mobile">IO流</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
+            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/01/12/Junit%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E6%B3%A8%E8%A7%A3%E3%80%81%E6%9E%9A%E4%B8%BE%E7%B1%BB/" style="float: left;">
+        ← Junit、反射、注解、枚举类
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/01/11/IO%E6%B5%81/">
+        IO流 →
+    </a>
+    
+</nav>
+
+                <div class="col-md-8 col-md-offset-2 col-sm-24">
+                    <script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+
+                        <div id="vcomments"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: true,
+        verify: true,
+        appId: 'uqRS6rgdVAO0sqVAVmDbuepE-gzGzoHsz',
+        appKey: 'IATuRpiDzSLsw829xXTjmVMc',
+        placeholder: '欢迎大家来留言吧~',
+        path: window.location.pathname,
+        avatar: 'monsterid'
+    })
+</script>
                 </div>
-              
-            </div>
 
-            
-          </article>
         </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
+    </section>
+
+      <!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+        <div class="copy">
+            <p>
+                &copy; 2022
+                <script>
+                    new Date().getFullYear() > 2022 && document.write("-" + new Date().getFullYear());
+                </script>, Content By
+                ShanTianQi. All Rights Reserved.
+            </p>
+            <div class="statistics">
+
+    <!-- 不蒜子统计PV -->
+    <span id="busuanzi_container_site_pv" style="display: inline;">
+        本站总访问量
+        <span id="busuanzi_value_site_pv"></span>次
+    </span>
+
+
+    <!-- 不蒜子统计UV -->
+    <span id="busuanzi_container_site_uv" style="display: inline;">
+        本站访客数
+        <span id="busuanzi_value_site_uv"></span>人次
+    </span>
+
+
 </div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+                <p style="margin-bottom: 30px;"><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/" style="color: #767D84">辽ICP备2021012349号-1</a></p>
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+        <div class="clearfix"> </div>
     </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
-  
-
-  
-
-  
 </footer>
 
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
 
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+    resizeHero();
 
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
 
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
 
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
 
 
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
       
-        typing(title);
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
 </body>
 </html>

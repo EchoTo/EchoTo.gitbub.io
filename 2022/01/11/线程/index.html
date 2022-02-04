@@ -1,272 +1,250 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
 
 
+    <head>
+        <title>
+            
+                线程 |
+                    
+                        ShanTianQi&#39;s Blog
+        </title>
+        <!-- Meta data -->
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="generator" content="ShanTianQi's Blog">
+        <meta name="author" content="ShanTianQi">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
 
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="ShanTianQi">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="第一章 多线程学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那么现在详设计一个程序，边打游戏边听歌，要解决这个问题，就需要使用多进程或多线程  1.1并发与并行 并发：指两个或多个事件在同一个时间段内发生。 并行：指两个或多个事件在同一时刻发生。     注意：单核处理器的计算机肯定是不能并行处理多个任务的，只能是多个任务在单个CPU上并发运行。同理，线程也是一样的，从宏观角度上理解线">
-<meta property="og:type" content="article">
-<meta property="og:title" content="线程">
-<meta property="og:url" content="https://www.stq555.com/2022/01/11/%E7%BA%BF%E7%A8%8B/index.html">
-<meta property="og:site_name" content="ShanTianQi&#39;s Blog">
-<meta property="og:description" content="第一章 多线程学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那么现在详设计一个程序，边打游戏边听歌，要解决这个问题，就需要使用多进程或多线程  1.1并发与并行 并发：指两个或多个事件在同一个时间段内发生。 并行：指两个或多个事件在同一时刻发生。     注意：单核处理器的计算机肯定是不能并行处理多个任务的，只能是多个任务在单个CPU上并发运行。同理，线程也是一样的，从宏观角度上理解线">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708223907.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708224345.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708231151.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708232046.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708235938.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709000000.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709105448.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709111740.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210809181832.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810131523.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810164723.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174734.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174638.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174841.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810175943.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810212906.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810214141.png">
-<meta property="og:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810214223.png">
-<meta property="article:published_time" content="2022-01-11T14:33:11.000Z">
-<meta property="article:modified_time" content="2022-01-11T15:16:52.980Z">
-<meta property="article:author" content="ShanTianQi">
-<meta property="article:tag" content="java">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708223907.png">
-  
-  
-  <title>线程 - ShanTianQi&#39;s Blog</title>
+        <!-- Favicon, (keep icon in root folder) -->
+        <link rel="Shortcut Icon" href="/img/bitbug_favicon.ico" type="image/ico">
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"www.stq555.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
-</head>
-
-
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
+        <link rel="alternate" href="/atom.xml" title="ShanTianQi&#39;s Blog" type="application/atom+xml">
+        <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
         
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
+            <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+            
+
+                <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+                <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+                <script src="/js/jquery-1.11.1.min.js"></script>
+                <script>
+                    window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')
+                </script>
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+                <!-- Load these in the <head> for quicker IE8+ load times -->
+                <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+                <style>
+                    .col-md-8.col-md-offset-2.opening-statement img {
+                        display: none;
+                    }
+                </style>
+    </head>
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+<div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+    <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+        <img src="/img/close.png" alt="Close" />
     </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="线程">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-11 22:33" pubdate>
-        2022年1月11日 晚上
-      </time>
-    </span>
-  
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu">
+        <li><a href="/" class="animsition-link" title="Home">首页</a></li>
+        <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
+        <!-- Dropdown Menu -->
+        
+                
+                    <li>
+                        <a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
+                        <ul class="sb-submenu">
+                            
+                                <li>
+                                    <a href="/categories/First/" class="animsition-link">
+                                        First<small>(2)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/MySQL/" class="animsition-link">
+                                        MySQL<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/daily/" class="animsition-link">
+                                        daily<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/java/" class="animsition-link">
+                                        java<small>(7)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/动态规划/" class="animsition-link">
+                                        动态规划<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/排序/" class="animsition-link">
+                                        排序<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/板子、算法/" class="animsition-link">
+                                        板子、算法<small>(1)</small></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories/算法/" class="animsition-link">
+                                        算法<small>(2)</small></a>
+                                </li>
+                                
+                        </ul>
+                    </li>
+                    
+                        <li><a href="/archives/link.html" class="animsition-link" title="about">友链</a></li>
+                        <li><a href="/archives/about.html" class="animsition-link" title="about">关于</a></li>
+    </ul>
+    <!-- Lists in Slidebars -->
+    <ul class="sb-menu secondary">
+        
+    </ul>
 </div>
 
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      undefined 字
-    </span>
-  
+<!-- ============================ END Off-canvas navigation =========================== -->
 
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      NaN 分钟
-    </span>
-  
+<!-- ============================ #sb-site Main Page Wrapper =========================== -->
 
-  
-  
-</div>
+<div id="sb-site">
+    <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
 
-            
-          </div>
+    <!-- ============================ Header & Logo bar =========================== -->
 
-          
+    <div id="navigation" class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <!-- Info-bar -->
+                <nav>
+                    <ul class="nav">
+                        <li>
+                            <a href="/" class="animsition-link">
+                                ShanTianQi's Blog
+                            </a>
+                        </li>
+                        <!-- 
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                             -->
+                    </ul>
+                </nav>
+                <!--// Info-bar -->
+            </div>
+            <!-- // .container -->
+            <div class="learnmore sb-toggle-right">More</div>
+            <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
         </div>
-      </div>
+        <!-- // .navbar-inner -->
     </div>
-  </header>
 
-  <main>
+    <!-- ============================ Header & Logo bar =========================== -->
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.png) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                            <p>
+                                
+                            </p>
+                            
+                            <p>
+                                每一个不曾起舞的日子都是对生命的辜负。
+                            </p>
+                            
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
+    </div>
+</section>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+
+
+    <section id="intro">
+        <div class="container" style="background-color: #fff;">
+            <div class="row col-md-offset-2">
+                <div class="col-md-8">
+                    <span class="post-meta">
+      <time datetime="2022-01-11T14:33:11.000Z" itemprop="datePublished">
+          2022-01-11
+      </time>
     
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">线程</h1>
-            
-            <div class="markdown-body">
-              <hr>
+    
+    | 
+    <a href='/tags/java/'>java</a>
+    
+    
+</span>
+                        <h1>
+                            线程
+                        </h1>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <hr>
 <h1 id="第一章-多线程"><a href="#第一章-多线程" class="headerlink" title="第一章 多线程"></a>第一章 多线程</h1><p>学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那么现在详设计一个程序，边打游戏边听歌，要解决这个问题，就需要使用多进程或多线程</p>
 <hr>
 <h2 id="1-1并发与并行"><a href="#1-1并发与并行" class="headerlink" title="1.1并发与并行"></a>1.1并发与并行</h2><ul>
 <li><strong>并发</strong>：指两个或多个事件在<strong>同一个时间段内</strong>发生。</li>
 <li><strong>并行</strong>：指两个或多个事件在<strong>同一时刻</strong>发生。</li>
 </ul>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708223907.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708224345.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708223907.png"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708224345.png"></p>
 <blockquote>
 <p>注意：单核处理器的计算机肯定是不能并行处理多个任务的，只能是多个任务在单个CPU上并发运行。同理，线程也是一样的，从宏观角度上理解线程是并行运行的，但是从微观角度上分析却是串行运行的，即一个线程一个线程的去运行，当系统只有一个CPU时，线程会以某种顺序执行多个线程，我们把这种情况称之为线程调度。</p>
 </blockquote>
@@ -275,12 +253,12 @@
 <li><strong>进程</strong>：是指一个内存中运行的应用程序，每个进程都有一个独立的内存空间，一个应用程序可以同时运行多个进程；进程也是程序的一次执行过程，是系统运行程序的基本单位；系统运行一个程序即是一个进程从创建、运行到消亡的过程。</li>
 </ul>
 <p><strong>进入到内存的程序叫进程</strong></p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708231151.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708231151.png"></p>
 <ul>
 <li><strong>线程</strong>：线程是进程中的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这个应用程序也可以称之为多线程程序。</li>
 </ul>
 <p><strong>应用程序到CPU的执行路径叫做线程</strong></p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708232046.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708232046.png"></p>
 <blockquote>
 <p>tips：一个程序运行后至少有一个进程，一个进程可以包含多个线程</p>
 </blockquote>
@@ -290,13 +268,13 @@
 <p>所有线程轮流使用CPU的使用权，平均分配每个线程占用CPU的时间。</p>
 </li>
 </ul>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708235938.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210708235938.png"></p>
 <ul>
 <li><p>抢先式调度</p>
 <p>优先让优先级高的线程使用CPU，如果线程的优先级相同，那么会随机选择一个(线程随机性)，Java使用的为抢占式调度。</p>
 </li>
 </ul>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709000000.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709000000.png"></p>
 <p><strong>主线程</strong></p>
 <p>执行main方法的线程</p>
 <p>单线程程序：java程序中只有一个线程</p>
@@ -305,7 +283,7 @@
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Demo04;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">            System.out.println(name+<span class="string">&quot;---&gt;&quot;</span>+i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709105448.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709105448.png"></p>
 <hr>
 <h2 id="1-3创建线程方式一"><a href="#1-3创建线程方式一" class="headerlink" title="1.3创建线程方式一"></a>1.3创建线程方式一</h2><hr>
 <p>Java使用<code>java.lang.Thread</code>类代表<strong>线程</strong>，所有的线程对象都必须是Thread类或其子类的实例。每个线程的作用是完成一定的任务，实际上就是执行一段程序流即一段顺序执行的代码。Java使用线程执行体来代表这段程序流。</p>
@@ -321,9 +299,9 @@
 <hr>
 <h1 id="第二章-线程"><a href="#第二章-线程" class="headerlink" title="第二章 线程"></a>第二章 线程</h1><hr>
 <h2 id="2-1多线程原理"><a href="#2-1多线程原理" class="headerlink" title="2.1多线程原理"></a>2.1多线程原理</h2><p><strong>1.随机性打印结果</strong></p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709111740.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210709111740.png"></p>
 <p><strong>2.多线程内存图解</strong></p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210809181832.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210809181832.png"></p>
 <hr>
 <h2 id="2-2Thread类"><a href="#2-2Thread类" class="headerlink" title="2.2Thread类"></a>2.2Thread类</h2><p><strong>构造方法：</strong></p>
 <ul>
@@ -388,7 +366,7 @@
 <p>我们来模拟电影院的售票窗口，实现多个窗口同时卖“葫芦娃大战奥特曼”这场电影票(多个窗口一起卖这100张票)</p>
 <p>需要窗口，采用线程对象来模拟;需要票，Runnable接口子类来模拟</p>
 <p>模拟票︰</p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810131523.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810131523.png"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.indi.demo06.ThreadSafe;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01Ticket</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      RunnableImpl mt =<span class="keyword">new</span> RunnableImpl();</span><br><span class="line">      Thread t0 =<span class="keyword">new</span> Thread(mt);</span><br><span class="line">      Thread t1 =<span class="keyword">new</span> Thread(mt);</span><br><span class="line">      Thread t2 =<span class="keyword">new</span> Thread(mt);</span><br><span class="line">      t0.start();</span><br><span class="line">      t1.start();</span><br><span class="line">      t2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.indi.demo07.Synchronized;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   解决线程安全问题的第一种方案：使用同步代码块</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RunnableImpl</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义一个多个线程共享的票源</span></span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">int</span> ticket=<span class="number">100</span>;</span><br><span class="line"><span class="comment">//     设置线程任务：卖票</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        使用死循环，让卖票操作重复执行</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line"><span class="comment">//            先判断票是否存在</span></span><br><span class="line">            <span class="keyword">if</span> (ticket&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">//提高安全问题出现的概率，让程序睡眠</span></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+<span class="string">&quot;---&gt;正在卖第&quot;</span>+ticket+<span class="string">&quot;张票&quot;</span>);</span><br><span class="line">                ticket--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -426,7 +404,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.indi.demo07.Synchronized;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   解决线程安全问题的第一种方案：使用同步代码块</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RunnableImpl</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="comment">//定义一个多个线程共享的票源</span></span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">int</span> ticket=<span class="number">100</span>;</span><br><span class="line">     Object obj = <span class="keyword">new</span> Object();</span><br><span class="line"><span class="comment">//     设置线程任务：卖票</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        使用死循环，让卖票操作重复执行</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (obj)&#123;</span><br><span class="line">            <span class="comment">//            先判断票是否存在</span></span><br><span class="line">            <span class="keyword">if</span> (ticket&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">//提高安全问题出现的概率，让程序睡眠</span></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+<span class="string">&quot;---&gt;正在卖第&quot;</span>+ticket+<span class="string">&quot;张票&quot;</span>);</span><br><span class="line">                ticket--;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 <p><strong>原理</strong></p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810164723.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810164723.png"></p>
 <hr>
 <h2 id="3-4同步方法"><a href="#3-4同步方法" class="headerlink" title="3.4同步方法"></a>3.4同步方法</h2><ul>
 <li><strong>同步方法</strong>：使用synchronized修饰的方法，就叫做同步方法，保证A线程执行该方法的时候，其他线程只能在方法外等着。</li>
@@ -473,8 +451,8 @@
 <h1 id="第四章-线程状态"><a href="#第四章-线程状态" class="headerlink" title="第四章    线程状态"></a>第四章    线程状态</h1><hr>
 <h2 id="4-1线程状态概述"><a href="#4-1线程状态概述" class="headerlink" title="4.1线程状态概述"></a>4.1线程状态概述</h2><p>当线程被创建并启用后，它既不是一启动就进入了执行状态，也不是一直处于执行状态。</p>
 <p>在线程的生命周期中，API中<code>java.lang.Thread.State</code>这个枚举中给出了六种线程状态：</p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174734.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174638.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174734.png"></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174638.png"></p>
 <hr>
 <h2 id="4-2Timed-Waiting-计时等待"><a href="#4-2Timed-Waiting-计时等待" class="headerlink" title="4.2Timed Waiting(计时等待)"></a>4.2Timed Waiting(计时等待)</h2><p><strong>倒计时</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.indi.demo05.Thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo04Sleep</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//模拟秒表</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">60</span>; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">            <span class="comment">//使用Thread类的sleep方法让程序睡眠1秒钟</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -488,12 +466,12 @@
 <p>tips：sleep()中指定的时间是线程不会运行的最短时间。因此，sleep()方法不能保证该线程睡眠到期后就开始立刻执行。</p>
 </blockquote>
 <p>Timed Waiting线程状态图：</p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174841.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810174841.png"></p>
 <hr>
 <h2 id="4-3BLOCKED-锁阻塞"><a href="#4-3BLOCKED-锁阻塞" class="headerlink" title="4.3BLOCKED(锁阻塞)"></a>4.3BLOCKED(锁阻塞)</h2><p>Blocked状态在API中的介绍为：一个正在阻塞等待一个监视器锁(锁对象)的线程处于这一状态。</p>
 <p>如，线程A与线程B代码中使用同一锁，如果线程A获取到锁，线程A进入到Runnable状态，那么线程B就进入到Blocked锁阻塞状态。</p>
 <p>这是由Runnable状态进入Blocked状态。除此Waiting以及Time Waiting状态也会在某种情况下进入阻塞状态。</p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810175943.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810175943.png"></p>
 <hr>
 <h2 id="4-4Waiting-无限等待"><a href="#4-4Waiting-无限等待" class="headerlink" title="4.4Waiting(无限等待)"></a>4.4Waiting(无限等待)</h2><p>Waiting状态在API中介绍为：一个正在无限期等待另一个线程执行一个特别的(唤醒)动作的线程处于这一状态。</p>
 <p>Runnable—wait()—&gt;Waiting—notify()—&gt;Runnable</p>
@@ -561,7 +539,7 @@
 
 <hr>
 <h1 id="第六章-线程池"><a href="#第六章-线程池" class="headerlink" title="第六章    线程池"></a>第六章    线程池</h1><hr>
-<h2 id="6-1线程池思想概述"><a href="#6-1线程池思想概述" class="headerlink" title="6.1线程池思想概述"></a>6.1线程池思想概述</h2><p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810212906.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-1线程池思想概述"><a href="#6-1线程池思想概述" class="headerlink" title="6.1线程池思想概述"></a>6.1线程池思想概述</h2><p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810212906.png"></p>
 <p>我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题:</p>
 <p>如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。</p>
 <p>那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务?</p>
@@ -570,9 +548,9 @@
 <h2 id="6-2线程池概念"><a href="#6-2线程池概念" class="headerlink" title="6.2线程池概念"></a>6.2线程池概念</h2><ul>
 <li><strong>线程池</strong>：其实就是一个容纳多个线程的容器，其中的线程可以重复使用，省去了频繁创建线程对象的操作，无需反复创建线程而消耗过多资源。</li>
 </ul>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810214141.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810214141.png"></p>
 <p>线程池工作原理图：</p>
-<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810214223.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/are-you-a-cookie/cloudimages/raw/master/img/QQ%E6%88%AA%E5%9B%BE20210810214223.png"></p>
 <p>合理利用线程池能够带来三个好处：</p>
 <ul>
 <li>降低资源消耗。减少了创建和销毁线程的次数，每个工作线程都可以被重复利用，可执行多个任务。</li>
@@ -603,209 +581,172 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.indi.demo12ThreadPool;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RunnableImpl</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">&quot;创建了一个新的线程执行&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+                    <div class="clearfix"></div>
+                    <hr class="nogutter">
+                    <p class="note note-warning">
+
+    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+
+</p>
             </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/java/">java</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/java/">java</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2022/01/11/IO%E6%B5%81/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">IO流</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2022/01/11/%E9%9B%86%E5%90%88/">
-                        <span class="hidden-mobile">集合</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
+            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2022/01/11/IO%E6%B5%81/" style="float: left;">
+        ← IO流
+    </a>
+    
+    
+    <a class="pull-right" href="/2022/01/11/%E9%9B%86%E5%90%88/">
+        集合 →
+    </a>
+    
+</nav>
+
+                <div class="col-md-8 col-md-offset-2 col-sm-24">
+                    <script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+
+                        <div id="vcomments"></div>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: true,
+        verify: true,
+        appId: 'uqRS6rgdVAO0sqVAVmDbuepE-gzGzoHsz',
+        appKey: 'IATuRpiDzSLsw829xXTjmVMc',
+        placeholder: '欢迎大家来留言吧~',
+        path: window.location.pathname,
+        avatar: 'monsterid'
+    })
+</script>
                 </div>
-              
-            </div>
 
-            
-          </article>
         </div>
-      </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
+    </section>
+
+      <!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+        <div class="copy">
+            <p>
+                &copy; 2022
+                <script>
+                    new Date().getFullYear() > 2022 && document.write("-" + new Date().getFullYear());
+                </script>, Content By
+                ShanTianQi. All Rights Reserved.
+            </p>
+            <div class="statistics">
+
+    <!-- 不蒜子统计PV -->
+    <span id="busuanzi_container_site_pv" style="display: inline;">
+        本站总访问量
+        <span id="busuanzi_value_site_pv"></span>次
+    </span>
+
+
+    <!-- 不蒜子统计UV -->
+    <span id="busuanzi_container_site_uv" style="display: inline;">
+        本站访客数
+        <span id="busuanzi_value_site_uv"></span>人次
+    </span>
+
+
 </div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+                <p style="margin-bottom: 30px;"><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/" style="color: #767D84">辽ICP备2021012349号-1</a></p>
         </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+        <div class="clearfix"> </div>
     </div>
-  </div>
-</div>
-    
-
-    
-  </main>
-
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
-  
-
-  
-
-  
 </footer>
 
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
 
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+    resizeHero();
 
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
 
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
 
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
 
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
 
 
 
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
       
-        typing(title);
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
-
 </body>
 </html>
