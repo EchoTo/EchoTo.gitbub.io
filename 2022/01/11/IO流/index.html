@@ -216,10 +216,12 @@
 
 
     <section id="intro">
-        <div class="container" style="background-color: #fff;">
-            <div class="row col-md-offset-2">
-                <div class="col-md-8">
-                    <span class="post-meta">
+        <!-- Table of Contents -->
+
+            <div class="container" style="background-color: #fff;">
+                <div class="row col-md-offset-2">
+                    <div class="col-md-8">
+                        <span class="post-meta">
       <time datetime="2022-01-11T15:21:40.000Z" itemprop="datePublished">
           2022-01-11
       </time>
@@ -230,13 +232,13 @@
     
     
 </span>
-                        <h1>
-                            IO流
-                        </h1>
+                            <h1>
+                                IO流
+                            </h1>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-8 col-md-offset-2">
-                <hr>
+                <div class="col-md-8 col-md-offset-2">
+                    <hr>
 <h1 id="第一章-IO概述"><a href="#第一章-IO概述" class="headerlink" title="第一章    IO概述"></a>第一章    IO概述</h1><hr>
 <h2 id="1-1什么是IO"><a href="#1-1什么是IO" class="headerlink" title="1.1什么是IO"></a>1.1什么是IO</h2><p>生活中，你肯定经历过这样的场景。当你编辑一个文本文件，忘记了<code>ctrl+s</code>，可能文件就白白编辑了。当你电脑上插入一个U盘，可以把一个视频，拷贝到你的电脑硬盘里。那么数据都是在哪些设备上的呢?键盘、内存、硬盘、外接设备等等。</p>
 <p>我们把这种数据的传输，可以看做是一种数据的流动，按照流动的方向，以内存为基准，分为<code>输入input</code>和<code>输出output</code>，即流向内存是输入流，流出内存的输出流。</p>
@@ -1033,15 +1035,15 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.priv.demo05PrintStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01PrintStream</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> FileNotFoundException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是在控制台输出的&quot;</span>);</span><br><span class="line">        PrintStream ps =<span class="keyword">new</span> PrintStream(<span class="string">&quot;C:\\Users\\97189\\Desktop\\s\\1.txt&quot;</span>);</span><br><span class="line">        System.setOut(ps);<span class="comment">//把输出语句的自的地改变为打印流的目的地</span></span><br><span class="line">        System.out.println(<span class="string">&quot;我在打印流的目的地输出&quot;</span>);</span><br><span class="line">        ps.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
-                    <p class="note note-warning">
+                        <div class="clearfix"></div>
+                        <hr class="nogutter">
+                        <p class="note note-warning">
 
     本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
 
 </p>
-            </div>
-            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+                </div>
+                <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     <a class="pull-left" href="/2022/01/12/File%E7%B1%BB%E3%80%81%E9%80%92%E5%BD%92/" style="float: left;">
         ← File类、递归
@@ -1054,8 +1056,8 @@
     
 </nav>
 
-                <div class="col-md-8 col-md-offset-2 col-sm-24">
-                    <script type="text/javascript">
+                    <div class="col-md-8 col-md-offset-2 col-sm-24">
+                        <script type="text/javascript">
   /**
    * 搜狐畅言
    */
@@ -1105,7 +1107,7 @@
 
 </script>
 
-                        <div id="vcomments"></div>
+                            <div id="vcomments"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -1118,9 +1120,9 @@
         avatar: 'monsterid'
     })
 </script>
-                </div>
+                    </div>
 
-        </div>
+            </div>
     </section>
 
       <!-- ============================ Footer =========================== -->

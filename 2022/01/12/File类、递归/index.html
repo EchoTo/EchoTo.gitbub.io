@@ -216,10 +216,12 @@
 
 
     <section id="intro">
-        <div class="container" style="background-color: #fff;">
-            <div class="row col-md-offset-2">
-                <div class="col-md-8">
-                    <span class="post-meta">
+        <!-- Table of Contents -->
+
+            <div class="container" style="background-color: #fff;">
+                <div class="row col-md-offset-2">
+                    <div class="col-md-8">
+                        <span class="post-meta">
       <time datetime="2022-01-12T09:22:03.000Z" itemprop="datePublished">
           2022-01-12
       </time>
@@ -230,13 +232,13 @@
     
     
 </span>
-                        <h1>
-                            File类、递归
-                        </h1>
+                            <h1>
+                                File类、递归
+                            </h1>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-8 col-md-offset-2">
-                <h1 id="第一章-File类"><a href="#第一章-File类" class="headerlink" title="第一章    File类"></a>第一章    File类</h1><hr>
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 id="第一章-File类"><a href="#第一章-File类" class="headerlink" title="第一章    File类"></a>第一章    File类</h1><hr>
 <h2 id="1-1概述"><a href="#1-1概述" class="headerlink" title="1.1概述"></a>1.1概述</h2><p><code>java.io.File</code>类时文件和目录路径名的抽象表示，主要用于文件和目录的创建、查找和删除等操作。</p>
 <p>java把电脑中的文件和文件夹(目录)封装为了一个FiLe类,我们可以使用FiLe类对文件和文件夹进行操作</p>
 <p>我们可以使用File类的方法</p>
@@ -428,15 +430,15 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.priv.demo03Filter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FilenameFilter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03FilenameFilter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        getAllFile(<span class="keyword">new</span> File(<span class="string">&quot;C:\\Users\\97189\\Desktop\\s&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getAllFile</span><span class="params">(File dir)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//优化：使用Lambda表达式(接口中只有一个方法)</span></span><br><span class="line">        File[] files = dir.listFiles((dir1, name) -&gt; <span class="keyword">new</span> File(dir1,name).isDirectory()||name.toLowerCase().endsWith(<span class="string">&quot;.png&quot;</span>));</span><br><span class="line">        <span class="keyword">for</span> (File files1:files) &#123;</span><br><span class="line">            <span class="keyword">if</span> (files1.isDirectory())&#123;</span><br><span class="line">                getAllFile(files1);</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                System.out.println(files1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
-                    <p class="note note-warning">
+                        <div class="clearfix"></div>
+                        <hr class="nogutter">
+                        <p class="note note-warning">
 
     本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
 
 </p>
-            </div>
-            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+                </div>
+                <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     <a class="pull-left" href="/2022/01/12/Junit%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E6%B3%A8%E8%A7%A3%E3%80%81%E6%9E%9A%E4%B8%BE%E7%B1%BB/" style="float: left;">
         ← Junit、反射、注解、枚举类
@@ -449,8 +451,8 @@
     
 </nav>
 
-                <div class="col-md-8 col-md-offset-2 col-sm-24">
-                    <script type="text/javascript">
+                    <div class="col-md-8 col-md-offset-2 col-sm-24">
+                        <script type="text/javascript">
   /**
    * 搜狐畅言
    */
@@ -500,7 +502,7 @@
 
 </script>
 
-                        <div id="vcomments"></div>
+                            <div id="vcomments"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -513,9 +515,9 @@
         avatar: 'monsterid'
     })
 </script>
-                </div>
+                    </div>
 
-        </div>
+            </div>
     </section>
 
       <!-- ============================ Footer =========================== -->

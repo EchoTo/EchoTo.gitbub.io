@@ -4106,3 +4106,86 @@ nav.pagination {
     font-size: 33px;
     display: inline-block;
 }
+
+#article-toc-inner:after,
+#article-toc-inner:before,
+.inner:after,
+.inner:before {
+    content: "";
+    display: table
+}
+
+#article-toc-inner:after,
+.inner:after {
+    clear: both
+}
+
+@media screen {
+    #article-toc-inner,
+    .inner {
+        padding: 0 20px
+    }
+}
+
+#article-tocf {
+    display: none;
+    float: right;
+    width: 25%;
+    margin-right: -220px;
+    opacity: .8
+}
+
+@media screen and (min-width: 769px) {
+    #article-toc {
+        display: block
+    }
+}
+
+#article-toc.fixed {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 220px;
+    padding-top: 55px;
+}
+
+.fixed #article-toc-inner {
+    position: fixed;
+    width: 220px;
+    top: 0;
+    bottom: 0;
+    padding-top: 55px;
+}
+
+#article-toc-inner ol {
+    margin-left: -16px;
+}
+
+#toc {
+    width: inherit;
+    line-height: 1em;
+    font-size: 0.9em;
+    float: left;
+    overflow: auto;
+}
+
+.toc-article {
+    position: absolute;
+    border-left: rgba(88, 88, 88, 0.1) 1px solid;
+    padding: 1em 1em 0 1em;
+    margin-left: 1em;
+}
+
+.toc-title {
+    font-size: 120%;
+}
+
+.toc-nav {
+    padding: 0;
+    margin: 1em;
+    line-height: 1.8em;
+}
+
+.toc-nav li {
+    list-style-type: none;
+}

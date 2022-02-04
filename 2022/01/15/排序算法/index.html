@@ -216,10 +216,12 @@
 
 
     <section id="intro">
-        <div class="container" style="background-color: #fff;">
-            <div class="row col-md-offset-2">
-                <div class="col-md-8">
-                    <span class="post-meta">
+        <!-- Table of Contents -->
+
+            <div class="container" style="background-color: #fff;">
+                <div class="row col-md-offset-2">
+                    <div class="col-md-8">
+                        <span class="post-meta">
       <time datetime="2022-01-15T06:42:27.000Z" itemprop="datePublished">
           2022-01-15
       </time>
@@ -232,13 +234,13 @@
     
     
 </span>
-                        <h1>
-                            排序算法
-                        </h1>
+                            <h1>
+                                排序算法
+                            </h1>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-8 col-md-offset-2">
-                <h1 id="第一章-时间复杂度、空间复杂度"><a href="#第一章-时间复杂度、空间复杂度" class="headerlink" title="第一章   时间复杂度、空间复杂度"></a>第一章   时间复杂度、空间复杂度</h1><hr>
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 id="第一章-时间复杂度、空间复杂度"><a href="#第一章-时间复杂度、空间复杂度" class="headerlink" title="第一章   时间复杂度、空间复杂度"></a>第一章   时间复杂度、空间复杂度</h1><hr>
 <h2 id="1-1时间复杂度分析"><a href="#1-1时间复杂度分析" class="headerlink" title="1.1时间复杂度分析"></a>1.1时间复杂度分析</h2><hr>
 <p><strong>一.事后分析估算方法</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.priv.demo01test;</span><br><span class="line"><span class="comment">//栈内存开辟1块内存来执行</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo04Factorial</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> begin = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">long</span> count = fun2(<span class="number">10</span>);</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        <span class="keyword">long</span> end = System.currentTimeMillis();</span><br><span class="line">        System.out.println(<span class="string">&quot;执行的时间为：&quot;</span>+(end-begin));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">fun2</span><span class="params">(<span class="keyword">long</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            result*=result;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -577,15 +579,15 @@
 <p><strong>快速排序：</strong></p>
 <p>​    快速排序需要一个基准值，在基准值的右侧找一个比基准值小的元素，在基准值的左侧找一个比基准值大的元素，然后交换这两个元素，此时会破坏稳定性，所以快速排序是一种不稳定的算法。</p>
 
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
-                    <p class="note note-warning">
+                        <div class="clearfix"></div>
+                        <hr class="nogutter">
+                        <p class="note note-warning">
 
     本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
 
 </p>
-            </div>
-            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+                </div>
+                <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     <a class="pull-left" href="/2022/01/17/%E7%BA%BF%E6%80%A7dp/" style="float: left;">
         ← 线性dp
@@ -598,8 +600,8 @@
     
 </nav>
 
-                <div class="col-md-8 col-md-offset-2 col-sm-24">
-                    <script type="text/javascript">
+                    <div class="col-md-8 col-md-offset-2 col-sm-24">
+                        <script type="text/javascript">
   /**
    * 搜狐畅言
    */
@@ -649,7 +651,7 @@
 
 </script>
 
-                        <div id="vcomments"></div>
+                            <div id="vcomments"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -662,9 +664,9 @@
         avatar: 'monsterid'
     })
 </script>
-                </div>
+                    </div>
 
-        </div>
+            </div>
     </section>
 
       <!-- ============================ Footer =========================== -->

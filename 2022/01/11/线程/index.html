@@ -216,10 +216,12 @@
 
 
     <section id="intro">
-        <div class="container" style="background-color: #fff;">
-            <div class="row col-md-offset-2">
-                <div class="col-md-8">
-                    <span class="post-meta">
+        <!-- Table of Contents -->
+
+            <div class="container" style="background-color: #fff;">
+                <div class="row col-md-offset-2">
+                    <div class="col-md-8">
+                        <span class="post-meta">
       <time datetime="2022-01-11T14:33:11.000Z" itemprop="datePublished">
           2022-01-11
       </time>
@@ -230,13 +232,13 @@
     
     
 </span>
-                        <h1>
-                            线程
-                        </h1>
+                            <h1>
+                                线程
+                            </h1>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-8 col-md-offset-2">
-                <hr>
+                <div class="col-md-8 col-md-offset-2">
+                    <hr>
 <h1 id="第一章-多线程"><a href="#第一章-多线程" class="headerlink" title="第一章 多线程"></a>第一章 多线程</h1><p>学习的程序在没有跳转语句的前提下，都是由上至下依次执行，那么现在详设计一个程序，边打游戏边听歌，要解决这个问题，就需要使用多进程或多线程</p>
 <hr>
 <h2 id="1-1并发与并行"><a href="#1-1并发与并行" class="headerlink" title="1.1并发与并行"></a>1.1并发与并行</h2><ul>
@@ -581,15 +583,15 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.indi.demo12ThreadPool;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RunnableImpl</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">&quot;创建了一个新的线程执行&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
-                    <p class="note note-warning">
+                        <div class="clearfix"></div>
+                        <hr class="nogutter">
+                        <p class="note note-warning">
 
     本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
 
 </p>
-            </div>
-            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+                </div>
+                <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     <a class="pull-left" href="/2022/01/11/IO%E6%B5%81/" style="float: left;">
         ← IO流
@@ -602,8 +604,8 @@
     
 </nav>
 
-                <div class="col-md-8 col-md-offset-2 col-sm-24">
-                    <script type="text/javascript">
+                    <div class="col-md-8 col-md-offset-2 col-sm-24">
+                        <script type="text/javascript">
   /**
    * 搜狐畅言
    */
@@ -653,7 +655,7 @@
 
 </script>
 
-                        <div id="vcomments"></div>
+                            <div id="vcomments"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -666,9 +668,9 @@
         avatar: 'monsterid'
     })
 </script>
-                </div>
+                    </div>
 
-        </div>
+            </div>
     </section>
 
       <!-- ============================ Footer =========================== -->

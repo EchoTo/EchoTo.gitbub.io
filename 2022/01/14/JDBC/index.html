@@ -216,10 +216,12 @@
 
 
     <section id="intro">
-        <div class="container" style="background-color: #fff;">
-            <div class="row col-md-offset-2">
-                <div class="col-md-8">
-                    <span class="post-meta">
+        <!-- Table of Contents -->
+
+            <div class="container" style="background-color: #fff;">
+                <div class="row col-md-offset-2">
+                    <div class="col-md-8">
+                        <span class="post-meta">
       <time datetime="2022-01-14T05:26:23.000Z" itemprop="datePublished">
           2022-01-14
       </time>
@@ -230,13 +232,13 @@
     
     
 </span>
-                        <h1>
-                            JDBC
-                        </h1>
+                            <h1>
+                                JDBC
+                            </h1>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-8 col-md-offset-2">
-                <h1 id="第一章-JDBC简介"><a href="#第一章-JDBC简介" class="headerlink" title="第一章  JDBC简介"></a>第一章  JDBC简介</h1><hr>
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 id="第一章-JDBC简介"><a href="#第一章-JDBC简介" class="headerlink" title="第一章  JDBC简介"></a>第一章  JDBC简介</h1><hr>
 <h2 id="1-1概念"><a href="#1-1概念" class="headerlink" title="1.1概念"></a>1.1概念</h2><ul>
 <li>概念：Java DataBase Connectivity   Java 数据库连接  Java语言操作数据库</li>
 <li>JDBC本质：其实是官方(SUN公司)定义的一套操作所有关系型数据库的规则，即接口。各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以使用这套接口(JDBC)编程，真正执行的代码是驱动jar包中的实现类。</li>
@@ -498,15 +500,15 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.priv.demo04JDBCTemplate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.BeanPropertyRowMapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.RowMapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo06JDBCTemplateP2</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 案例一：查询id为1的记录，将其封装为Map集合</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        JdbcTemplate jdbcTemplate=<span class="keyword">new</span> JdbcTemplate(JDBCUtils.getDataSource());</span><br><span class="line">        String sql=<span class="string">&quot;select * from account where id=?&quot;</span>;</span><br><span class="line">        Map&lt;String, Object&gt; stringObjectMap = jdbcTemplate.queryForMap(sql, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">        System.out.println(stringObjectMap);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 案例二：查询所有记录，将其封装为List集合</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JdbcTemplate jdbcTemplate=<span class="keyword">new</span> JdbcTemplate(JDBCUtils.getDataSource());</span><br><span class="line">    String sql=<span class="string">&quot;select * from account&quot;</span>;</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; maps = jdbcTemplate.queryForList(sql);</span><br><span class="line">    <span class="keyword">for</span>(Map&lt;String, Object&gt; stringObjectMap:maps)&#123;</span><br><span class="line">        System.out.println(stringObjectMap);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *案例三：查询所有记录，将其封装为account对象的List集合</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test3</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JdbcTemplate jdbcTemplate=<span class="keyword">new</span> JdbcTemplate(JDBCUtils.getDataSource());</span><br><span class="line">    String sql=<span class="string">&quot;select * from account&quot;</span>;</span><br><span class="line">    List&lt;account&gt; list=jdbcTemplate.query(sql, <span class="keyword">new</span> RowMapper&lt;account&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> account <span class="title">mapRow</span><span class="params">(ResultSet resultSet, <span class="keyword">int</span> i)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">            account account=<span class="keyword">new</span> account();</span><br><span class="line">            <span class="keyword">int</span> id = account.getId(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">            String username = account.getUsername();</span><br><span class="line">            <span class="keyword">int</span> balance = account.getBalance();</span><br><span class="line"></span><br><span class="line">            account.setId(id);</span><br><span class="line">            account.setUsername(username);</span><br><span class="line">            account.setBalance(balance);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">for</span>(account account:list)&#123;</span><br><span class="line">        System.out.println(account);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test4</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JdbcTemplate jdbcTemplate=<span class="keyword">new</span> JdbcTemplate(JDBCUtils.getDataSource());</span><br><span class="line">    String sql=<span class="string">&quot;select * from account&quot;</span>;</span><br><span class="line">    List&lt;account&gt; query = jdbcTemplate.query(sql, <span class="keyword">new</span> BeanPropertyRowMapper&lt;account&gt;(account.class));</span><br><span class="line">    <span class="keyword">for</span>(account account:query)&#123;</span><br><span class="line">        System.out.println(account);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *案例四：查询总记录数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test5</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JdbcTemplate jdbcTemplate=<span class="keyword">new</span> JdbcTemplate(JDBCUtils.getDataSource());</span><br><span class="line">    String sql=<span class="string">&quot;select count(id) from account&quot;</span>;</span><br><span class="line">    Long aLong = jdbcTemplate.queryForObject(sql, <span class="keyword">long</span>.class);</span><br><span class="line">    System.out.println(aLong);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
-                    <p class="note note-warning">
+                        <div class="clearfix"></div>
+                        <hr class="nogutter">
+                        <p class="note note-warning">
 
     本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
 
 </p>
-            </div>
-            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+                </div>
+                <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     <a class="pull-left" href="/2022/01/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="float: left;">
         ← 排序算法
@@ -519,8 +521,8 @@
     
 </nav>
 
-                <div class="col-md-8 col-md-offset-2 col-sm-24">
-                    <script type="text/javascript">
+                    <div class="col-md-8 col-md-offset-2 col-sm-24">
+                        <script type="text/javascript">
   /**
    * 搜狐畅言
    */
@@ -570,7 +572,7 @@
 
 </script>
 
-                        <div id="vcomments"></div>
+                            <div id="vcomments"></div>
 <script>
     new Valine({
         el: '#vcomments',
@@ -583,9 +585,9 @@
         avatar: 'monsterid'
     })
 </script>
-                </div>
+                    </div>
 
-        </div>
+            </div>
     </section>
 
       <!-- ============================ Footer =========================== -->
