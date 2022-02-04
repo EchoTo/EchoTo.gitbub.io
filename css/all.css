@@ -15119,32 +15119,3 @@ pre .clojure .title {
 pre .deletion {
     color: #dc322f;
 }
-
-#toc {
-    width: inherit;
-    line-height: 1em;
-    font-size: 0.9em;
-    float: left;
-    overflow: auto;
-}
-
-.toc-article {
-    position: absolute;
-    border-left: rgba(88, 88, 88, 0.1) 1px solid;
-    padding: 1em 1em 0 1em;
-    margin-left: 1em;
-}
-
-.toc-title {
-    font-size: 120%;
-}
-
-.toc-nav {
-    padding: 0;
-    margin: 1em;
-    line-height: 1.8em;
-}
-
-.toc-nav li {
-    list-style-type: none;
-}
