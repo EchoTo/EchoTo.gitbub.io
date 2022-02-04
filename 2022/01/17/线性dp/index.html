@@ -1,81 +1,381 @@
-{% extends './includes/base.swig' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- favicon -->
+    
+        <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+        <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+    
+    <!-- locale -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <!--Description-->
+    
+    <meta name="description" content="模型一：LIS问题(最长上升子序列)
+问题描述：给定一个长度为N的数列A，求数值单调递增的子序列长度最长为多少。
+状态表示：f[i]表示以A[i]为结尾的”最长上升子序列”的长度。
+状态转移方程：f[i] = max{f[j] + 1} (0 &amp;lt;= j &amp;lt; i，A[j] &amp;lt; A[i">
+    <meta name="keywords" content="算法, 动态规划, 算法, 动态规划">
+    <meta name="author" content="ShanTianQi">
+    <!-- og:description -->
+    <meta name="og:description" content="模型一：LIS问题(最长上升子序列)
+问题描述：给定一个长度为N的数列A，求数值单调递增的子序列长度最长为多少。
+状态表示：f[i]表示以A[i]为结尾的”最长上升子序列”的长度。
+状态转移方程：f[i] = max{f[j] + 1} (0 &amp;lt;= j &amp;lt; i，A[j] &amp;lt; A[i">
+    <!-- color -->
+    <meta name="theme-color" content="#ffffff">
+    <!--Author-->
+    
+        <meta name="author" content="ShanTianQi">
+    
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="线性dp"/>
+    
+    <!--Open Graph type-->
+    <meta property="og:type" content="website"/>
+    <!--Page Cover-->
+    
+    <meta property="og:image" content="https://www.stq555.com/img/450x450/seira.jpg">
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="ShanTianQi&#39;s Blog"/>
+    <!-- Title -->
+    
+    <title>线性dp - ShanTianQi&#39;s Blog</title>
+    <!-- framework CSS -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" rel="stylesheet">    
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    
+<link rel="stylesheet" href="/css/index.css">
 
-{% block extra_style %}
-    {% if theme.gitalk.enable %}
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    {% endif %}
-    <link rel='stylesheet' href="{{ url_for('./css/dracula.css') }}">
-{% endblock %}
+    
+<link rel="stylesheet" href="/css/component.css">
 
-{% block content %}
-    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
-        <img class="al_lightbox_img"/>
-    </div>
-    <div class="al_page_background dis_flex_center al_full_cover"></div>
-    <div class="al_page_container">
-        <div class="al_pos_ab al_fake_background"></div>
-        <div class="al_main_container al_shadow al_main_page_container">
-            <article class="al_article">
-                <header>
-                    <h1 class="al_page_title">
-                        {{ page.title|default('No Title') }}
-                    </h1>
-                    <div class="al_page_info dis_flex">
-                        <div class="al_page_content_info">
-                            {{ page.date.format('ddd MMMM D, Y hh:mm A') }}
-                        </div>
+    
+<script src="/js/modernizr.custom.js"></script>
 
-                        {% if wordcount %}
-                            <div class="al_page_content_info">
-                                {{ wordcount(page.content) }} words
-                            </div>
-                        {% endif %}
-
-                        {% if min2read %}
-                            <div class="al_page_content_info">
-                                {{ min2read(page.content) }} minutes read
-                            </div>
-                        {% endif %}
-                        <span class="tags"></span>
+    <!-- jquery -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
+</head>
+    <body class="has-background-light">
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="loader-section"></div>
+        </div>
+        <nav class="navbar is-fixed-top is-white has-bg-shadow" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="/img/logo2.svg" height="28" alt="logo">
+            </a>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                
+                    <a class="navbar-item" href="/about">
+                    <!-- <span class="icon"><i class="fas fa-about"> </i></span> -->
+                    &nbsp;About </a>
+                
+                    <a class="navbar-item" href="/friends">
+                    <!-- <span class="icon"><i class="fas fa-friends"> </i></span> -->
+                    &nbsp;Friends </a>
+                
+                
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Categories</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item -link" href="/categories/First/">First</a><a class="navbar-item -link" href="/categories/MySQL/">MySQL</a><a class="navbar-item -link" href="/categories/daily/">daily</a><a class="navbar-item -link" href="/categories/java/">java</a><a class="navbar-item -link" href="/categories/%E6%9D%BF%E5%AD%90%E3%80%81%E7%AE%97%E6%B3%95/">板子、算法</a><a class="navbar-item -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><a class="navbar-item -link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a><a class="navbar-item -link" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/">排序</a>
                     </div>
-                </header>
-
-                {% if toc(page.content) %}
-                    <div class="al_page_content_outline">
-                        {{ toc(page.content,{list_number:false}) }}
+                </div>
+                
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            
+                            
+                                <a class="button has-transparent-bg" target="_blank" rel="noopener" href="https://gitlab.com/sira313"><span class="icon"> <i class="fab fa-gitlab"></i> </span></a>
+                            
+                            
+                            
+                                <a class="button has-transparent-bg" target="_blank" rel="noopener" href="https://twitter.com/aflasio"><span class="icon"> <i class="fab fa-twitter"></i> </span></a>
+                            
+                            
+                            
+                                <a class="button has-transparent-bg" target="_blank" rel="noopener" href="https://facebook.com/aflasio.art"><span class="icon"> <i class="fab fa-facebook"></i> </span></a>
+                            
+                            
+                            
+                                <a class="button has-transparent-bg" href="mailto:sira.argia@gmail.com" title="email"> <span class="icon"><i class="fas fa-envelope"></i> </span></a>
+                            
+                            
+                            
+                                <a class="button has-transparent-bg" target="_blank" rel="noopener" href="https://t.me/aflasio"><span class="icon"> <i class="fab fa-telegram"></i> </span></a>
+                            
+                            
                     </div>
-                {% endif %}
-
-                {# Page Content #}
-                <section id="post-body">
-                    {{ page.content }}
-                </section>
-
-                {# Comment Plugins #}
-                {% include "./includes/plugins/gitalk.swig" %}
-                {% include "./includes/plugins/disqus.swig" %}
-            </article>
-
-            {# Navigate Element #}
-            <nav class="dis_flex al_post_nav">
-                <a class="al_post_nav_item dis_flex_acenter" href="{{ url_for(page.prev.path) }}">
-                    {% if page.prev %}
-                        <svg class="al_arrow">
-                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
-                        </svg>
-                        <span class="al_text_ellipsis al_post_nav_desc">{{ page.prev.title }}</span>
-                    {% endif %}
-                </a>
-                <a class="al_post_nav_item dis_flex_acenter" href="{{ url_for(page.next.path) }}">
-                    {% if page.next %}
-                        <span class="al_text_ellipsis al_post_nav_desc">{{ page.next.title }}</span>
-                        <svg class="al_arrow">
-                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
-                        </svg>
-                    {% endif %}
-                </a>
-            </nav>
+                </div>
+            </div>
         </div>
     </div>
+</nav>
+        <div class="container">
+            <section class="hero is-fullheight" style="margin-top:3.25rem">
+</div>
+  <div class="hero-body" style="padding-bottom: 0">
+    <div class="box box-mobile has-box-shadow" style="width: 100%">
+      <div class="media" style="margin-bottom:1em">
+        <figure class="media-left">
+          <p class="image is-48x48">
+            <img class="is-rounded" src="/img/450x450/seira.jpg" alt="profile pic">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content" style="margin-top:5px">
+            <h1 class="title is-6">线性dp</h1>
+            <h2 class="subtitle is-size-7 has-text-grey">
+              <span class="icon is-small"><i class="fas fa-calendar"></i></span> 2022-01-17
+              &nbsp;
+              <span class="icon is-small"><i class="fas fa-user"></i></span> ShanTianQi
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <!-- Gallery -->
+        
+        <div class="post">
+          <h2 id="模型一：LIS问题-最长上升子序列"><a href="#模型一：LIS问题-最长上升子序列" class="headerlink" title="模型一：LIS问题(最长上升子序列)"></a>模型一：LIS问题(最长上升子序列)</h2><ul>
+<li>问题描述：给定一个长度为N的数列A，求数值单调递增的子序列长度最长为多少。</li>
+<li>状态表示：f[i]表示以A[i]为结尾的”最长上升子序列”的长度。</li>
+<li>状态转移方程：f[i] = max{f[j] + 1} (0 &lt;= j &lt; i，A[j] &lt; A[i])</li>
+<li>目标：max{f[i]} (1 &lt;= i &lt;= N)</li>
+</ul>
+<h4 id="练习题："><a href="#练习题：" class="headerlink" title="练习题："></a>练习题：</h4><blockquote>
+<p>给定一个长度为 N 的数列，求数值严格单调递增的子序列的长度最长是多少。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 N。</p>
+<p>第二行包含 N 个整数，表示完整序列。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示最大长度。</p>
+<h4 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤N≤1000<br>−10^9 ≤数列中的数≤ 10^9</p>
+<h4 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">3 1 2 1 8 5 6</span><br></pre></td></tr></table></figure>
 
-{% endblock %}
+<h4 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="优化前-n-2"><a href="#优化前-n-2" class="headerlink" title="优化前(n^2)"></a>优化前(n^2)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo01dp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01LIS</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> N = <span class="number">1010</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> f[] = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> a[] = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = sc.nextInt();</span><br><span class="line">        </span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">		    a[i] = sc.nextInt();	</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> maxv = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			f[i] = <span class="number">1</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j ++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (a[i] &gt; a[j]) f[i] = Math.max(f[i], f[j] + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			maxv = Math.max(maxv, f[i]);</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		System.out.println(maxv);</span><br><span class="line">		</span><br><span class="line">		sc.close();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="优化后-nlogn"><a href="#优化后-nlogn" class="headerlink" title="优化后(nlogn)"></a>优化后(nlogn)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo01dp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01LISO</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> []a = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> []q = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i] = sc.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> l = <span class="number">0</span>, r = len;</span><br><span class="line">			<span class="keyword">while</span>(l &lt; r)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">			    <span class="keyword">if</span>(q[mid] &lt; a[i]) l = mid;</span><br><span class="line">			    <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">			   </span><br><span class="line">			&#125;</span><br><span class="line">			len = Math.max(len, r + <span class="number">1</span>);</span><br><span class="line">			q[r + <span class="number">1</span>] = a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		System.out.println(len);</span><br><span class="line">		</span><br><span class="line">		sc.close();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="模型二：LCS问题-最长公共子序列"><a href="#模型二：LCS问题-最长公共子序列" class="headerlink" title="模型二：LCS问题(最长公共子序列)"></a>模型二：LCS问题(最长公共子序列)</h2><hr>
+<ul>
+<li>问题描述：给定两个长度分别为N和M的字符串A和B，求既是A的子序列又是B的子序列的字符串的最大长度。</li>
+<li>状态表示：F[i , j]表示前缀子串A[1 ~ i]与B[1 ~ j]的”最长公共子序列”的长度。</li>
+<li>转移方程：f[i , j] = max{f[i - 1, j] , f[i , j - 1 ] , f[i - 1, j - 1] (if A[i] = B[i])}</li>
+<li>目标：f[N,M]</li>
+</ul>
+<h4 id="练习题：-1"><a href="#练习题：-1" class="headerlink" title="练习题："></a>练习题：</h4><blockquote>
+<p>给定两个长度分别为 N 和 M 的字符串 A 和 B，求既是 A 的子序列又是 BB 的子序列的字符串长度最长是多少。</p>
+<h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含两个整数 N 和 M。</p>
+<p>第二行包含一个长度为 N 的字符串，表示字符串 A。</p>
+<p>第三行包含一个长度为 M 的字符串，表示字符串 B。</p>
+<p>字符串均由小写字母构成。</p>
+<h4 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示最大长度。</p>
+<h4 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤N,M≤1000</p>
+<h4 id="输入样例：-1"><a href="#输入样例：-1" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4 5</span><br><span class="line">acbd</span><br><span class="line">abedc</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-1"><a href="#输出样例：-1" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo01dp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02LCS</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> N = <span class="number">1010</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">char</span>[]s1 = <span class="keyword">new</span> <span class="keyword">char</span>[N];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">char</span>[]s2 = <span class="keyword">new</span> <span class="keyword">char</span>[N];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[][]f = <span class="keyword">new</span> <span class="keyword">int</span>[N][N];</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		m = sc.nextInt();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">char</span>[]s11 = <span class="keyword">new</span> <span class="keyword">char</span>[n];</span><br><span class="line">		<span class="keyword">char</span>[]s21 = <span class="keyword">new</span> <span class="keyword">char</span>[m];</span><br><span class="line">		</span><br><span class="line">		s11 = sc.next().toCharArray();</span><br><span class="line">		s21 = sc.next().toCharArray();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			s1[i] = s11[i - <span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			s2[i] = s21[i - <span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j ++)</span><br><span class="line">			&#123;</span><br><span class="line">				f[i][j] = Math.max(f[i - <span class="number">1</span>][j], f[i][j - <span class="number">1</span>]);</span><br><span class="line">				<span class="keyword">if</span>(s1[i] == s2[j]) f[i][j] = Math.max(f[i][j], f[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>); </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		System.out.println(f[n][m]);</span><br><span class="line">		</span><br><span class="line">		sc.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="模型三：数字三角形问题"><a href="#模型三：数字三角形问题" class="headerlink" title="模型三：数字三角形问题"></a>模型三：数字三角形问题</h2><hr>
+<ul>
+<li>问题描述：给定一个共有N行的三角矩阵A，其中第i行有i列。从左上角出发，每次可以向下方或右下方走走一步，最终到达底部。求把经过的所有位置上的数加起来，和最大是多少。</li>
+<li>状态表示：f[i , j]表示从左上角走到第i行第j列，和最大是多少。</li>
+<li>转移方程：f[i , j] = A[i , j] + max{f[i - 1, j] , f[i - 1 , j - 1] (if j &gt; 1)}</li>
+<li>目标：max{f[N , j]} (1 &lt;= j &lt;= N)</li>
+</ul>
+<h4 id="练习题：-2"><a href="#练习题：-2" class="headerlink" title="练习题："></a>练习题：</h4><blockquote>
+<p>给定一个如下图所示的数字三角形，从顶部出发，在每一结点可以选择移动至其左下方的结点或移动至其右下方的结点，一直走到底层，要求找出一条路径，使路径上的数字的和最大。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        7</span><br><span class="line">      3   8</span><br><span class="line">    8   1   0</span><br><span class="line">  2   7   4   4</span><br><span class="line">4   5   2   6   5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 n，表示数字三角形的层数。</p>
+<p>接下来 n 行，每行包含若干整数，其中第 ii 行表示数字三角形第 ii 层包含的整数。</p>
+<h4 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示最大的路径数字和。</p>
+<h4 id="数据范围-2"><a href="#数据范围-2" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n≤500<br>−10000≤三角形中的整数≤10000</p>
+<h4 id="输入样例：-2"><a href="#输入样例：-2" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">7</span><br><span class="line">3 8</span><br><span class="line">8 1 0 </span><br><span class="line">2 7 4 4</span><br><span class="line">4 5 2 6 5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-2"><a href="#输出样例：-2" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="从上往下"><a href="#从上往下" class="headerlink" title="从上往下"></a>从上往下</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo01dp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03Triangle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> N = <span class="number">510</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n,ans;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[][]f = <span class="keyword">new</span> <span class="keyword">int</span>[N][N];</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j ++)</span><br><span class="line">			&#123;</span><br><span class="line">				f[i][j] = sc.nextInt();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j ++)</span><br><span class="line">			&#123;</span><br><span class="line">				f[i][j] += Math.max(f[i - <span class="number">1</span>][j], f[i - <span class="number">1</span>][j - <span class="number">1</span>]);</span><br><span class="line">				</span><br><span class="line">				ans = Math.max(ans, f[i][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		System.out.println(ans);</span><br><span class="line">		</span><br><span class="line">		sc.close();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="从下往上"><a href="#从下往上" class="headerlink" title="从下往上"></a>从下往上</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo01dp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03Triangle</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> N = <span class="number">510</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n,ans;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span>[][]f = <span class="keyword">new</span> <span class="keyword">int</span>[N][N];</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		n = sc.nextInt();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j ++)</span><br><span class="line">			&#123;</span><br><span class="line">				f[i][j] = sc.nextInt();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt; <span class="number">0</span>; i -- )</span><br><span class="line">	    &#123;</span><br><span class="line">	        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j ++ )</span><br><span class="line">	        &#123;</span><br><span class="line">	        	f[i][j] += Math.max(f[i + <span class="number">1</span>][j], f[i + <span class="number">1</span>][j + <span class="number">1</span>]);</span><br><span class="line">	        &#125;</span><br><span class="line">	            </span><br><span class="line">	    &#125;</span><br><span class="line">		</span><br><span class="line">		System.out.println(f[<span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">		</span><br><span class="line">		sc.close();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="模型四：LCIS问题-最长公共上升子序列"><a href="#模型四：LCIS问题-最长公共上升子序列" class="headerlink" title="模型四：LCIS问题(最长公共上升子序列)"></a>模型四：LCIS问题(最长公共上升子序列)</h2><hr>
+<h4 id="练习题：-3"><a href="#练习题：-3" class="headerlink" title="练习题："></a>练习题：</h4><blockquote>
+<p>熊大妈的奶牛在小沐沐的熏陶下开始研究信息题目。</p>
+<p>小沐沐先让奶牛研究了最长上升子序列，再让他们研究了最长公共子序列，现在又让他们研究最长公共上升子序列了。</p>
+<p>小沐沐说，对于两个数列 AA 和 BB，如果它们都包含一段位置不一定连续的数，且数值是严格递增的，那么称这一段数是两个数列的公共上升子序列，而所有的公共上升子序列中最长的就是最长公共上升子序列了。</p>
+<p>奶牛半懂不懂，小沐沐要你来告诉奶牛什么是最长公共上升子序列。</p>
+<p>不过，只要告诉奶牛它的长度就可以了。</p>
+<p>数列 AA 和 BB 的长度均不超过 3000。</p>
+<h4 id="输入格式-3"><a href="#输入格式-3" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含一个整数 N，表示数列 A，BA，B 的长度。</p>
+<p>第二行包含 N 个整数，表示数列 AA。</p>
+<p>第三行包含 N 个整数，表示数列 BB。</p>
+<h4 id="输出格式-3"><a href="#输出格式-3" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示最长公共上升子序列的长度。</p>
+<h4 id="数据范围-3"><a href="#数据范围-3" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤N≤3000,序列中的数字均不超过 2^31−1</p>
+<h4 id="输入样例：-3"><a href="#输入样例：-3" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">2 2 1 3</span><br><span class="line">2 1 2 3</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-3"><a href="#输出样例：-3" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo01dp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo04LCIS</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> N = <span class="number">3010</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> a[] = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> b[] = <span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> f[][] = <span class="keyword">new</span> <span class="keyword">int</span>[N][N];</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		  Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		  n = sc.nextInt();</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		  &#123;</span><br><span class="line">			  a[i] = sc.nextInt();</span><br><span class="line">		  &#125;</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		  &#123;</span><br><span class="line">			  b[i] = sc.nextInt();</span><br><span class="line">		  &#125;</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		  &#123;</span><br><span class="line">			  <span class="keyword">int</span> maxv = <span class="number">1</span>;</span><br><span class="line">			  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++)</span><br><span class="line">			  &#123;</span><br><span class="line">				  f[i][j] = f[i - <span class="number">1</span>][j];</span><br><span class="line">				  </span><br><span class="line">				  <span class="keyword">if</span>(a[i] == b[i]) f[i][j] = Math.max(f[i][j], maxv);</span><br><span class="line">				  </span><br><span class="line">				  <span class="keyword">if</span>(b[j] &lt; a[j]) maxv = Math.max(maxv, f[i - <span class="number">1</span>][j] + <span class="number">1</span>);</span><br><span class="line">			  &#125;</span><br><span class="line">		  &#125;</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		  &#123;</span><br><span class="line">			  res = Math.max(res, f[n][i]);</span><br><span class="line">		  &#125;</span><br><span class="line">		  </span><br><span class="line">		  System.out.println(res);</span><br><span class="line">		  </span><br><span class="line">		  sc.close();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="模型五：最短编辑距离"><a href="#模型五：最短编辑距离" class="headerlink" title="模型五：最短编辑距离"></a>模型五：最短编辑距离</h2><hr>
+<h4 id="练习题：-4"><a href="#练习题：-4" class="headerlink" title="练习题："></a>练习题：</h4><blockquote>
+<p>给定两个字符串 A 和 B，现在要将 A 经过若干操作变为 B，可进行的操作有：</p>
+<ol>
+<li>删除–将字符串 A 中的某个字符删除。</li>
+<li>插入–在字符串 A 的某个位置插入某个字符。</li>
+<li>替换–将字符串 A 中的某个字符替换为另一个字符。</li>
+</ol>
+<p>现在请你求出，将 A 变为 B 至少需要进行多少次操作。</p>
+<h4 id="输入格式-4"><a href="#输入格式-4" class="headerlink" title="输入格式"></a>输入格式</h4><p>第一行包含整数 n，表示字符串 A 的长度。</p>
+<p>第二行包含一个长度为 n 的字符串 A。</p>
+<p>第三行包含整数 m，表示字符串 B 的长度。</p>
+<p>第四行包含一个长度为 m 的字符串 B。</p>
+<p>字符串中均只包含大写字母。</p>
+<h4 id="输出格式-4"><a href="#输出格式-4" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数，表示最少操作次数。</p>
+<h4 id="数据范围-4"><a href="#数据范围-4" class="headerlink" title="数据范围"></a>数据范围</h4><p>1≤n,m≤1000</p>
+<h4 id="输入样例：-4"><a href="#输入样例：-4" class="headerlink" title="输入样例："></a>输入样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">10 </span><br><span class="line">AGTCTGACGC</span><br><span class="line">11 </span><br><span class="line">AGTAAGTAGGC</span><br><span class="line">Copy</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出样例：-4"><a href="#输出样例：-4" class="headerlink" title="输出样例："></a>输出样例：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo01dp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo05Shortest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> N = <span class="number">1010</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> f[][] = <span class="keyword">new</span> <span class="keyword">int</span>[N][N];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">char</span> s1[] = <span class="keyword">new</span> <span class="keyword">char</span>[N];</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">char</span> s2[] = <span class="keyword">new</span> <span class="keyword">char</span>[N];</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		  Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		  <span class="keyword">char</span>[]s11 = <span class="keyword">new</span> <span class="keyword">char</span>[n];</span><br><span class="line">		  <span class="keyword">char</span>[]s21 = <span class="keyword">new</span> <span class="keyword">char</span>[m];</span><br><span class="line">		  </span><br><span class="line">		  n = sc.nextInt();</span><br><span class="line">		  s11 = sc.next().toCharArray();</span><br><span class="line">		  m = sc.nextInt();</span><br><span class="line">		  s21 = sc.next().toCharArray();</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		  &#123;</span><br><span class="line">			  s1[i] = s11[i - <span class="number">1</span>];</span><br><span class="line">		  &#125;</span><br><span class="line">			</span><br><span class="line">		  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i ++)</span><br><span class="line">		  &#123;</span><br><span class="line">			  s2[i] = s21[i - <span class="number">1</span>];</span><br><span class="line">		  &#125;</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">	      &#123;</span><br><span class="line">			  f[i][<span class="number">0</span>] = i;</span><br><span class="line">		  &#125;</span><br><span class="line">		  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i ++)</span><br><span class="line">		  &#123;</span><br><span class="line">			  f[<span class="number">0</span>][i] = i;</span><br><span class="line">		  &#125;</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)</span><br><span class="line">		  &#123;</span><br><span class="line">			  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j ++)</span><br><span class="line">			  &#123;</span><br><span class="line">				  <span class="keyword">int</span> u;</span><br><span class="line">				  <span class="keyword">if</span> (s1[i] == s2[j]) u = <span class="number">0</span>;</span><br><span class="line">				  <span class="keyword">else</span> u = <span class="number">1</span>;</span><br><span class="line">				  f[i][j] = Math.min(f[i - <span class="number">1</span>][j], f[i][j - <span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">				  f[i][j] = Math.min(f[i][j], f[i - <span class="number">1</span>][j - <span class="number">1</span>] + u);</span><br><span class="line">			  &#125;</span><br><span class="line">		  &#125;</span><br><span class="line">		 </span><br><span class="line">		  System.out.println(f[n][m]);</span><br><span class="line">		  </span><br><span class="line">		  sc.close();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        <!-- Tags -->
+        <div class="tags" style="margin-top: 0.6em;">
+          
+
+    <a href="/tags/算法/"><span class="tag is-medium is-white has-text-link"># 算法</span></a> <a href="/tags/动态规划/"><span class="tag is-medium is-white has-text-link"># 动态规划</span></a>
+
+ 
+        </div>
+        
+<nav class="pagination is-centered buttons" role="navigation" aria-label="pagination" style="margin-top:10px;justify-content: space-between">
+  
+  <a href="/2022/01/27/%E6%97%A5%E5%B8%B8%E5%88%86%E4%BA%AB/" data-title="日常分享" class="pagination-previous button is-light"><span class="icon"><i class="fas fa-angle-left"></i></i></span>&nbsp;Latest</a>
+  
+  
+  <a href="/2022/01/15/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" data-title="排序算法" class="pagination-next button is-light">Earlier&nbsp;<span class="icon"><i class="fas fa-angle-right"></i></span></a>
+  
+ </nav> 
+   
+      </div>      
+    </div>       
+  </div>
+  <!-- comments -->
+  
+
+
+
+
+    <div class="hero-foot">
+        <div class="box box-mobile has-box-shadow" style="width: 100%">
+            <div id="valine"></div>
+            <!-- valine comment -->
+            <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+            <script>
+            new Valine({
+                el: '#valine' ,
+                notify:false,
+                verify:false,
+                app_id: '6jbQfaaH3EJezmsqw43NCcNa-gzGzoHsz',
+                app_key: '5AsBAiusJURpbNDHTP4LHwA6',
+                placeholder: 'Leave comment',
+                path:window.location.pathname,
+                lang:'en',
+                avatar:'mm' 
+            });
+            </script>
+        </div>
+    </div>
+  
+</section>
+        </div>
+    </body>
+    <footer>
+        
+<div class="footer">
+    <div class="content has-text-centered">
+      <p>
+        &copy; 2018-2019 <a href="/">ShanTianQi&#39;s Blog</a><br>
+        Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> and <a target="_blank" rel="noopener" href="https://bulma.io">Bulma</a><br>
+        Theme source code is on <a target="_blank" rel="noopener" href="https://github.com/sira313/hexo-theme-griddy">Github</a>
+      </p>
+    </div>
+</div>
+    </footer>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!-- Gallery -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<!-- masonry for gallery -->
+
+<script src="/js/app.js"></script>
+
+
+<script src="/js/masonry.pkgd.min.js"></script>
+
+
+<script src="/js/imagesloaded.js"></script>
+
+
+<script src="/js/classie.js"></script>
+
+
+<script src="/js/AnimOnScroll.js"></script>
+
+
+<script src="/js/AnimOnScroll.js"></script>
+
+<script>
+ var grid = document.getElementById( 'grid' );
+ if (grid) {
+	new AnimOnScroll(grid, {
+		minDuration : 0.4,
+		maxDuration : 0.7,
+		viewportFactor : 0.2
+	} );
+}
+</script>
+<!-- fontawesome -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/js/all.min.js"></script>
+<!-- comments -->
+
+
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-128493937-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</html>
