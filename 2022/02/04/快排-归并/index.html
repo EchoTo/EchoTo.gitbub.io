@@ -1,242 +1,225 @@
 <!DOCTYPE html>
-<!--[if lte IE 8 ]>
-<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!--
-***************  *      *     *
-      8          *    *       *
-      8          *  *         *
-      8          **           *
-      8          *  *         *
-      8          *    *       *
-      8          *      *     *
-      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
--->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
-<!--<![endif]-->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="ShanTianQi">
 
 
-    <head>
-        <title>
-            
-                快排&amp;&amp;归并 |
-                    
-                        ShanTianQi&#39;s Blog
-        </title>
-        <!-- Meta data -->
-        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="generator" content="ShanTianQi's Blog">
-        <meta name="author" content="ShanTianQi">
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
 
-        <!-- Favicon, (keep icon in root folder) -->
-        <link rel="Shortcut Icon" href="/img/bitbug_favicon.ico" type="image/ico">
 
-        <link rel="alternate" href="/atom.xml" title="ShanTianQi&#39;s Blog" type="application/atom+xml">
-        <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+
+<title>快排&amp;&amp;归并 | ShanTianQi&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
         
-            <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
-            
+    
 
-                <!--[if IE 8]>
-    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
-    <![endif]-->
 
-                <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
-                <script src="/js/jquery-1.11.1.min.js"></script>
-                <script>
-                    window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')
-                </script>
-                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="ShanTianQi's Blog" type="application/atom+xml">
+</head>
 
-                <!-- Load these in the <head> for quicker IE8+ load times -->
-                <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                <!--[if lt IE 9]>
-    <script src="/js/html5shiv.min.js"></script>
-    <script src="/js/respond.min.js"></script>
-    <![endif]-->
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
 
-                <style>
-                    .col-md-8.col-md-offset-2.opening-statement img {
-                        display: none;
-                    }
-                </style>
-    </head>
-<!--
-<body class="post-template">
--->
-<body id="index" class="lightnav animsition">
-
-      <!-- ============================ Off-canvas navigation =========================== -->
-
-<div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
-    <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
-        <img src="/img/close.png" alt="Close" />
-    </div>
-    <!-- Lists in Slidebars -->
-    <ul class="sb-menu">
-        <li><a href="/" class="animsition-link" title="Home">首页</a></li>
-        <li><a href="/archives" class="animsition-link" title="archive">归档</a></li>
-        <!-- Dropdown Menu -->
-        
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Bentham&#39;s Blog</a></div>
+            <div class="menu navbar-right">
                 
-                    <li>
-                        <a class="sb-toggle-submenu">分类<span class="sb-caret"></span></a>
-                        <ul class="sb-submenu">
-                            
-                                <li>
-                                    <a href="/categories/First/" class="animsition-link">
-                                        First<small>(2)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/MySQL/" class="animsition-link">
-                                        MySQL<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/daily/" class="animsition-link">
-                                        daily<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/java/" class="animsition-link">
-                                        java<small>(7)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/算法/动态规划/" class="animsition-link">
-                                        动态规划<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/算法/排序/" class="animsition-link">
-                                        排序<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/板子、算法/" class="animsition-link">
-                                        板子、算法<small>(1)</small></a>
-                                </li>
-                                
-                                <li>
-                                    <a href="/categories/算法/" class="animsition-link">
-                                        算法<small>(2)</small></a>
-                                </li>
-                                
-                        </ul>
-                    </li>
-                    
-                        <li><a href="/archives/link.html" class="animsition-link" title="about">友链</a></li>
-                        <li><a href="/archives/about.html" class="animsition-link" title="about">关于</a></li>
-    </ul>
-    <!-- Lists in Slidebars -->
-    <ul class="sb-menu secondary">
-        
-    </ul>
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Bentham&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
 </div>
 
-<!-- ============================ END Off-canvas navigation =========================== -->
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
 
-<!-- ============================ #sb-site Main Page Wrapper =========================== -->
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
 
-<div id="sb-site">
-    <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
 
-    <!-- ============================ Header & Logo bar =========================== -->
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
 
-    <div id="navigation" class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <!-- Info-bar -->
-                <nav>
-                    <ul class="nav">
-                        <li>
-                            <a href="/" class="animsition-link">
-                                ShanTianQi's Blog
-                            </a>
-                        </li>
-                        <!-- 
-                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
-                             -->
-                    </ul>
-                </nav>
-                <!--// Info-bar -->
-            </div>
-            <!-- // .container -->
-            <div class="learnmore sb-toggle-right">More</div>
-            <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar before"></span>
-                <span class="icon-bar main"></span>
-                <span class="icon-bar after"></span>
-                </button>
-        </div>
-        <!-- // .navbar-inner -->
-    </div>
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
 
-    <!-- ============================ Header & Logo bar =========================== -->
-      <!-- ============================ Hero Image =========================== -->
+</script>
+    
 
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.png) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                            <p>
-                                
-                            </p>
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">快排&amp;&amp;归并</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">ShanTianQi</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">二月 4, 2022&nbsp;&nbsp;11:55:38</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
                             
-                            <p>
-                                每一个不曾起舞的日子都是对生命的辜负。
-                            </p>
+                                <a href="/categories/%E6%9D%BF%E5%AD%90%E3%80%81%E7%AE%97%E6%B3%95/">板子、算法</a>
                             
-
-                    </div>
+                        </span>
+                    
                 </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
+            
+        </header>
 
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-    <section id="intro">
-        <div class="container" style="background-color: #fff;">
-            <div class="row col-md-offset-2">
-                <div class="col-md-8">
-                    <span class="post-meta">
-      <time datetime="2022-02-04T03:55:38.000Z" itemprop="datePublished">
-          2022-02-04
-      </time>
-    
-    
-    | 
-    <a href='/tags/板子、算法/'>板子、算法</a>
-    
-    
-</span>
-                        <h1>
-                            快排&&归并
-                        </h1>
-                </div>
-            </div>
-            <div class="col-md-8 col-md-offset-2">
-                <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><hr>
+        <div class="post-content">
+            <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><hr>
 <h3 id="模板："><a href="#模板：" class="headerlink" title="模板："></a>模板：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> q[],<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (r &lt;= l)<span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> standard = q[l];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> left = l - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> right = r + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">while</span> (q[++ left] &lt; standard);</span><br><span class="line">        <span class="keyword">while</span> (q[-- right] &gt; standard);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">int</span> t = q[left];</span><br><span class="line">            q[left] = q[right];</span><br><span class="line">            q[right] = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    quickSort(q,l,right);</span><br><span class="line">    quickSort(q,right+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="时间复杂度分析："><a href="#时间复杂度分析：" class="headerlink" title="时间复杂度分析："></a>时间复杂度分析：</h3><p>快速排序的一次切分从两头开始交替搜索，直到left和right重合，因此，一次切分算法的时间复杂度为O(n)但整个快速排序的时间复杂度和切分的次数相关。</p>
@@ -254,168 +237,73 @@
 <p>用树状图来描述归并，如果一个数组有8个元素，那么它将每次除以2找最小的子数组，共拆log8次，值为3，所以树共有3层,那么自顶向下第k层有2^ k个子数组，每个数组的长度为2^( 3 - k)，归并最多需要2^ (3-k)次比较。因此每层的比较次数为2^k * 2^ (3-K)=2^ 3,那么3层总共为3* 2^3。</p>
 <p>假设元素的个数为n，那么使用归并排序拆分的次数为log2(n)，所以共log2(n)层，那么使用log2(n)替换上面3 * 2^3中 的3这个层数，最终得出的归并排序的时间复杂度为:log2(n) * 2^(log2(n))=log2(n)<em>n,根据大O推导法则，忽略底数，最终归并排序的时间复杂度为*<em>o(nlogn)</em></em></p>
 
-                    <div class="clearfix"></div>
-                    <hr class="nogutter">
-                    <p class="note note-warning">
+        </div>
 
-    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>ShanTianQi</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://www.stq555.com/2022/02/04/%E5%BF%AB%E6%8E%92-%E5%BD%92%E5%B9%B6/">https://www.stq555.com/2022/02/04/%E5%BF%AB%E6%8E%92-%E5%BD%92%E5%B9%B6/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
 
-</p>
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E6%9D%BF%E5%AD%90%E3%80%81%E7%AE%97%E6%B3%95/"># 板子、算法</a>
+                    
+                        
+                </span>
             </div>
-            <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
-    
-    
-    <a class="pull-right" href="/2022/01/27/%E6%97%A5%E5%B8%B8%E5%88%86%E4%BA%AB/">
-        日常分享 →
-    </a>
-    
-</nav>
-
-                <div class="col-md-8 col-md-offset-2 col-sm-24">
-                    <script type="text/javascript">
-  /**
-   * 搜狐畅言
-   */
-
-  /*
-  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
-
-  window.onload = function () {
-    (function () {
-      var appid = 'cytXXXX';
-      var conf = 'prod_xxxxxxxxxxxxxxxxx';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      var loadJs = function (d, a, id) {
-        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-        var b = document.createElement("script");
-        b.setAttribute("type", "text/javascript");
-        b.setAttribute("charset", "UTF-8");
-        b.setAttribute("src", d);
-        if (id) {
-          b.setAttribute("id", id);
-        }
-        if (typeof a === "function") {
-          if (window.attachEvent) {
-            b.onreadystatechange = function () {
-              var e = b.readyState;
-              if (e === "loaded" || e === "complete") {
-                b.onreadystatechange = null;
-                a()
-              }
-            }
-          } else {
-            b.onload = a
-          }
-        }
-        c.appendChild(b)
-      };
-
-      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
-        window.changyan.api.config({
-          appid: appid,
-          conf: conf
-        })
-      });
-    })();
-  }
-  */
-
-</script>
-
-                        <div id="vcomments"></div>
-<script>
-    new Valine({
-        el: '#vcomments',
-        notify: true,
-        verify: true,
-        appId: 'uqRS6rgdVAO0sqVAVmDbuepE-gzGzoHsz',
-        appKey: 'IATuRpiDzSLsw829xXTjmVMc',
-        placeholder: '欢迎大家来留言吧~',
-        path: window.location.pathname,
-        avatar: 'monsterid'
-    })
-</script>
-                </div>
-
-        </div>
-    </section>
-
-      <!-- ============================ Footer =========================== -->
-
-<footer>
-    <div class="container">
-        <div class="copy">
-            <p>
-                &copy; 2022
-                <script>
-                    new Date().getFullYear() > 2022 && document.write("-" + new Date().getFullYear());
-                </script>, Content By
-                ShanTianQi. All Rights Reserved.
-            </p>
-            <div class="statistics">
-
-    <!-- 不蒜子统计PV -->
-    <span id="busuanzi_container_site_pv" style="display: inline;">
-        本站总访问量
-        <span id="busuanzi_value_site_pv"></span>次
-    </span>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/01/27/%E6%97%A5%E5%B8%B8%E5%88%86%E4%BA%AB/">日常分享</a>
+            
+        </section>
 
 
-    <!-- 不蒜子统计UV -->
-    <span id="busuanzi_container_site_uv" style="display: inline;">
-        本站访客数
-        <span id="busuanzi_value_site_uv"></span>人次
-    </span>
-
-
+    </article>
 </div>
-                <p style="margin-bottom: 30px;"><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/" style="color: #767D84">辽ICP备2021012349号-1</a></p>
-        </div>
-        <div class="clearfix"> </div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© ShanTianQi | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
     </div>
 </footer>
 
-<!-- ============================ END Footer =========================== -->
-      <!-- Load our scripts -->
-<!-- Resizable 'on-demand' full-height hero -->
-<script type="text/javascript">
-    var resizeHero = function () {
-        var hero = $(".cover,.heightblock"),
-            window1 = $(window);
-        hero.css({
-            "height": window1.height()
-        });
-    };
-
-    resizeHero();
-
-    $(window).resize(function () {
-        resizeHero();
-    });
-</script>
-<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
-<script src="/js/scripts.js"></script><!-- Theme scripts -->
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$('#intro').find('img').each(function(){
-  var alt = this.alt;
-
-  if (alt){
-    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
-  }
-
-  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
-});
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-
-      
+    </div>
 </body>
+
 </html>
